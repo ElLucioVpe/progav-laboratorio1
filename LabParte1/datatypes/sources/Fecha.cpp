@@ -1,4 +1,5 @@
 #include "../headers/Fecha.h"
+#include <stdexcept>
 
 Fecha::Fecha(int dia, int mes, int anio) {
 	this->dia = dia;
