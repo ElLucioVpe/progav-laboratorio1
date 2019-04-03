@@ -1,22 +1,21 @@
-#ifndef FECHA_H
-#define FECHA_H
+#ifndef DTFECHA_H
+#define DTFECHA_H
 
-class Fecha {
+class DtFecha {
 private:
     int dia;
     int mes;
     int anio;
     bool isValid();
-    
+
 public:
-    Fecha(int dia, int mes, int anio);
-    
+    DtFecha(int dia, int mes, int anio);
+
     int getDia() const;
     int getMes() const;
     int getAnio() const;
 
-    virtual ~Fecha();
+    virtual ~DtFecha();
 };
 
 #endif /* FECHA_H */
-
