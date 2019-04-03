@@ -1,2 +1,2 @@
 # progav-laboratorio1
-laboratorio serio
+laboratorio serio, como sus programadores. :)
