@@ -16,6 +16,11 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
+const int MAX_SOCIOS = 50;
+
+Socio** socios = new Socio* [MAX_SOCIOS];
+int cantidadSocios = 0;
+
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota);
 void agregarMascota(std::string ci, const DtMascota& dtMascota);
 void ingresarConsulta(std::string motivo, std::string ci);
@@ -28,8 +33,25 @@ int main(int argc, char** argv) {
 	return 0;
 }
 
+Socio* obtenerSocio(std::string ci) {
+    for(int i = 0; i < cantidadSocios; i++) {
+        if (socios[i]->getCi() == ci) {
+            return socios[i];
+        }
+    }
+    return NULL;
+}
+
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota){
-	
+	if (cantidadSocios == MAX_SOCIOS) {
+        throw std::invalid_argument("No se pueden agregar mas socios");
+    }
+    
+    Socio* socio = obtenerSocio(ci);
+    
+    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); }
+
+    socios[cantidadSocios] = new Socios(ci, nombre, dtMascota);
 }
 
 void agregarMascota(std::string ci, const DtMascota& dtMascota){
