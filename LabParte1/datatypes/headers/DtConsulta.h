@@ -5,14 +5,14 @@
 
 class DtConsulta {
 public:
-    DtConsulta(DtFecha, string);
+    DtConsulta(DtFecha, std::string);
 
   DtFecha getFechaConsulta() const;
-  string getMotivo() const;
+  std::string getMotivo() const;
 
    virutal ~DtConsulta();
 
  private:
    DtFecha fecha;
-   string motivo;
+   std::string motivo;
 };
