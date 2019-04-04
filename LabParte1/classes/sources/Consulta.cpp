@@ -1,7 +1,7 @@
 #include "../headers/Consulta.h"
 #include <stdexcept>
 
-Consulta::Consulta (DtFecha& fechaConsulta, string motivo){
+Consulta::Consulta (DtFecha& fechaConsulta, std::string motivo){
 	this->fechaConsulta = fechaConsulta;
 	this->motivo = motivo;
 }
@@ -17,7 +17,7 @@ void Consulta::setFechaConsulta(DtFecha& fechaConsulta) const {
 	this->fechaConsulta = fechaConsulta;
 }
 
-void Consulta::setMotivo(string motivo) const{
+void Consulta::setMotivo(std::string motivo) const{
 	this->motivo = motivo;
 }
 	
