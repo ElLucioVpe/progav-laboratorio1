@@ -43,15 +43,7 @@ Socio* obtenerSocio(std::string ci) {
 }
 
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota){
-	if (cantidadSocios == MAX_SOCIOS) {
-        throw std::invalid_argument("No se pueden agregar mas socios");
-    }
-    
-    Socio* socio = obtenerSocio(ci);
-    
-    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); }
-
-    socios[cantidadSocios] = new Socios(ci, nombre, dtMascota);
+	
 }
 
 void agregarMascota(std::string ci, const DtMascota& dtMascota){
