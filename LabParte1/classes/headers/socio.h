@@ -2,17 +2,23 @@
 #define SOCIO_H
 
 #include "../../datatypes/headers/Fecha.h"
+#include "../../datatypes/headers/Consulta.h"
+#include "../../datatypes/headers/Mascotas.h"
 
 class Socio {
 public:
-	Socio(string, string, const Fecha&);
-	string getCi() const;
-	string getNombre() const;
+	Socio(std::string, std::string, const Fecha&);
+	std::string getCi() const;
+	std::string getNombre() const;
 	Fecha getFechaIngreso() const;
+
+	virtual ~Socio();
 private:
-	string Ci;
-	string Nombre;
+	std::string Ci;
+	std::string Nombre;
 	Fecha FechaIngreso;
+	Consulta** consultas;
+	Mascota** mascotas;
 };
 
-#endif /* EMPRESA_H */
+#endif /* SOCIO_H */
