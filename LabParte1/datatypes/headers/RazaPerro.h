@@ -5,4 +5,4 @@ enum class RazaPerro {
 	Collie,
 	Pekines,
 	Otro
-}
+};

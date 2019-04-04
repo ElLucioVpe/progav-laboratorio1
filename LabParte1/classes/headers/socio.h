@@ -13,6 +13,6 @@ private:
 	string Ci;
 	string Nombre;
 	Fecha FechaIngreso;
-}
+};
 
 #endif /* EMPRESA_H */
