@@ -7,13 +7,15 @@
 
 class Socio {
 public:
-	Socio(string, string, const Fecha&);
-	string getCi() const;
-	string getNombre() const;
+	Socio(std::string, std::string, const Fecha&);
+	std::string getCi() const;
+	std::string getNombre() const;
 	Fecha getFechaIngreso() const;
+
+	virtual ~Socio();
 private:
-	string Ci;
-	string Nombre;
+	std::string Ci;
+	std::string Nombre;
 	Fecha FechaIngreso;
 	Consulta** consultas;
 	Mascota** mascotas;
