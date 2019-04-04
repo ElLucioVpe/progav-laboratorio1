@@ -6,11 +6,11 @@
 class Consulta {
 private:
 	DtFecha fechaConsulta;
-	string motivo;
+	std::string motivo;
 public:
-	Consulta(const DtFecha&, string);
+	Consulta(const DtFecha&, std::string);
 	DtFecha getFechaConsulta() const;
-	string getMotivo() const;
+	std::string getMotivo() const;
 	
 	void setFechaConsulta() const;
 	void setMotivo() const;
