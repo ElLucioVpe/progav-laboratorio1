@@ -7,20 +7,21 @@
 
 class Socio {
 public:
-	Socio(std::string, std::string, const Fecha&);
+	Socio(std::string, std::string, const Fecha&, Mascota&);
 	std::string getCi() const;
 	std::string getNombre() const;
 	Fecha getFechaIngreso() const;
 
-	boolean agregarMascota(const Mascota&);
+	void agregarMascota(const Mascota&);
 
 	virtual ~Socio();
 private:
 	std::string Ci;
 	std::string Nombre;
 	Fecha FechaIngreso;
-	Consulta** consultas;
-	Mascota** mascotas;
+	int CantidadMascotas = 0;
+	Consulta** Consultas;
+	Mascota** Mascotas;
 };
 
 #endif /* SOCIO_H */

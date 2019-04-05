@@ -1,8 +1,8 @@
 #include "../headers/Socio.h"
 
 Socio::Socio(std::string ci, std::string nombre, const Fecha& fechaIngreso) : fechaIngreso(fechaIngreso) {
-	this->ci = ci;
-	this->nombre = nombre;
+	this->Ci = ci;
+	this->Nombre = nombre;
 }
 
 std::string Socio::getCi() const {
@@ -15,6 +15,15 @@ std::string Socio::getNombre() const {
 
 std::string Socio::getFechaIngreso() const {
 	return this->fechaIngreso;
+}
+
+void Socio::agregarMascota(const Mascota* m1) {
+    if (this->CantidadMascotas == MAX_MASCOTAS) {
+        throw std::invalid_argument("El socio no puede tener más mascotas.");
+    } else {
+    	this->Mascotas[this->CantidadMascotas] = m1;
+    	this->CantidadMascotas++;
+    }
 }
 
 Socio::~Socio() {
