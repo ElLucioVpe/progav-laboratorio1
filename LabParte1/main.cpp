@@ -75,15 +75,17 @@ Socio* obtenerSocio(std::string ci) {
 }
 
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota){
-	if (cantidadSocios == MAX_SOCIOS) {
-        throw std::invalid_argument("No se pueden agregar mas socios");
-    }
-
-    Socio* socio = obtenerSocio(ci);
-
-    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); }
-
-    socios[cantidadSocios] = new Socios(ci, nombre, dtMascota);
+	if(cantidadSocios == MAX_SOCIOS) { 
+		throw std::invalid_argument("No se pueden agregar más socios."); 
+	} else { 
+		Socio* socio = obtenerSocioPorCI(ci); 
+ 
+	    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); } 
+ 
+	    Mascota* mascota = obtenerMascotaPorNombre(dtMascota); 
+	    socios[++cantidadSocios] = new Socio(ci, nombre, FechaIngreso, mascota); 
+	    socio->agregarMascota(mascota); 
+	} 
 }
 
 void agregarMascota(std::string ci, const DtMascota& dtMascota){
