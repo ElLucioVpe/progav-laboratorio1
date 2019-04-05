@@ -3,7 +3,7 @@
 
 #include "../../datatypes/headers/Fecha.h"
 #include "../../datatypes/headers/Consulta.h"
-#include "../../datatypes/headers/Mascotas.h"
+#include "../../datatypes/headers/Mascota.h"
 
 class Socio {
 public:
@@ -11,6 +11,8 @@ public:
 	std::string getCi() const;
 	std::string getNombre() const;
 	Fecha getFechaIngreso() const;
+
+	boolean agregarMascota(const Mascota&);
 
 	virtual ~Socio();
 private:
