@@ -58,25 +58,28 @@ void registrarSocio(std::string ci, std::string nombre, Fecha FechaIngreso, cons
 }
 
 void agregarMascota(std::string ci, const DtMascota& dtMascota){
-	
+
 }
 
 void ingresarConsulta(std::string motivo, std::string ci){
-	
+
 }
 
 DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas){
 	DtConsulta** ejemplo = NULL;
-	
+
 	return ejemplo;
 }
 
 void eliminarSocio(std::string ci){
-	
+	Socio* socio = obtenerSocio(ci);
+	if (socio == NULL) { throw std::invalid_argument("No existe el socio que quiere eliminar"); }
+	delete socio;
+	std::cout << "El Socio se ha eliminado efectivamente" << '\n';
 }
 
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 	DtMascota** ejemplo = NULL;
-	
+
 	return ejemplo;
 }
