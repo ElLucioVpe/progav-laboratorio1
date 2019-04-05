@@ -17,7 +17,7 @@
 using namespace std;
 
 const int MAX_SOCIOS = 50;
-const int MAX_MASCOTAS = 20;
+const int MAX_MASCOTAS = 10;
 
 Socio** socios = new Socio* [MAX_SOCIOS];
 int cantidadSocios = 0;
