@@ -6,7 +6,7 @@
 
 class DtPerro : public DtMascota {
 public:
-      DtPerro (string Ci, string Nombre, Fecha& FechaIngreso, string NombreMascota, Genero& Genero, float Peso, RazaPerro& raza, boolean VacunaCachorro);
+      DtPerro (std::string Ci, std::string Nombre, Fecha& FechaIngreso const, std::string NombreMascota, Genero& Genero const, float Peso, RazaPerro& raza const, boolean VacunaCachorro);
       RazaPerro getRaza(); const
       boolean getVacunaCachorro(); const
 }
