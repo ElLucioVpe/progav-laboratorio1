@@ -2,6 +2,8 @@
 
 DtMascota::DtMascota(string nombre, const Genero& genero, float peso, float racionDiaria) : genero(genero){
   this->nombre = nombre;
+  this->peso = peso;
+  this->racionDiaria = racionDiaria;
 }
 string DtMascota::getNombre() const {
   return this->nombre;
