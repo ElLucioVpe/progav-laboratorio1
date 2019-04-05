@@ -16,3 +16,7 @@ string Socio::getNombre() const {
 string Socio::getFechaIngreso() const {
 	return this->fechaIngreso;
 }
+
+Socio::~Socio() {
+	delete [] FechaIngreso;
+}

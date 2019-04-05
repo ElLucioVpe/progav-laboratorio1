@@ -2,6 +2,8 @@
 #define SOCIO_H
 
 #include "../../datatypes/headers/Fecha.h"
+#include "../../datatypes/headers/Consulta.h"
+#include "../../datatypes/headers/Mascotas.h"
 
 class Socio {
 public:
@@ -13,6 +15,8 @@ private:
 	string Ci;
 	string Nombre;
 	Fecha FechaIngreso;
+	Consulta** consultas;
+	Mascota** mascotas;
 };
 
-#endif /* EMPRESA_H */
+#endif /* SOCIO_H */
