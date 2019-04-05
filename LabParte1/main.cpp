@@ -46,34 +46,37 @@ void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMasco
 	if (cantidadSocios == MAX_SOCIOS) {
         throw std::invalid_argument("No se pueden agregar mas socios");
     }
-    
+
     Socio* socio = obtenerSocio(ci);
-    
+
     if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); }
 
     socios[cantidadSocios] = new Socios(ci, nombre, dtMascota);
 }
 
 void agregarMascota(std::string ci, const DtMascota& dtMascota){
-	
+
 }
 
 void ingresarConsulta(std::string motivo, std::string ci){
-	
+
 }
 
 DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas){
 	DtConsulta** ejemplo = NULL;
-	
+
 	return ejemplo;
 }
 
 void eliminarSocio(std::string ci){
-	
+	Socio* socio = obtenerSocio(ci);
+	if (socio == NULL) { throw std::invalid_argument("No existe el socio que quiere eliminar"); }
+	delete socio;
+	std::cout << "El Socio se ha eliminado efectivamente" << '\n';
 }
 
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 	DtMascota** ejemplo = NULL;
-	
+
 	return ejemplo;
 }
