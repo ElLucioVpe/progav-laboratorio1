@@ -12,9 +12,8 @@ public:
       RazaPerro getRaza() const;
       bool getVacunaCachorro() const;
 private:
-      DtPerro(std::string NombreMascota, Genero& Genero const, float Peso, RazaPerro& raza const, boolean VacunaCachorro);
-      RazaPerro Raza;
-      bool VacunaCachorro;
+  RazaPerro Raza;
+  bool VacunaCachorro;
 };
 
 #endif /* DTPERRO_H */
