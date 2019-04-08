@@ -1,16 +1,16 @@
 #include "../headers/DtPerro.h"
 #include "RazaPerro.h"
 
-DtPerro::DtPerro(RazaPerro raza, bool vacunaCachorro, std::string NombreMascota, Genero& Genero, float Peso) : DtMascota(NombreMascota, Genero, Peso) {
-	this->Raza = Raza;
-	this->VacunaCachorro = VacunaCachorro;
+DtPerro::DtPerro(RazaPerro _Raza, bool _vacunaCachorro, std::string NombreMascota, Genero& Genero, float Peso) : DtMascota(NombreMascota, Genero, Peso) {
+	this->Raza = _Raza;
+	this->VacunaCachorro = _vacunaCachorro;
 }
 
-RazaPerro Perro::getRaza() {
+RazaPerro DtPerro::getRaza() const {
 	return this->Raza;
 }
 
-boolean Perro::getVacunaCachorro() {
+bool DtPerro::getVacunaCachorro() const {
 	return this->VacunaCachorro;
 }
 
