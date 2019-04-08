@@ -1,7 +1,7 @@
 #include "../headers/DtPerro.h"
-#include "razaperro.h"
+#include "RazaPerro.h"
 
-DtPerro::DtPerro(Razaperro raza,boolean vacunaCachorro) : Mascota(std::string NombreMascota, Genero& Genero, float Peso) {
+DtPerro::DtPerro(RazaPerro raza, bool vacunaCachorro, std::string NombreMascota, Genero& Genero, float Peso) : DtMascota(NombreMascota, Genero, Peso) {
 	this->Raza = Raza;
 	this->VacunaCachorro = VacunaCachorro;
 }
@@ -15,6 +15,5 @@ boolean Perro::getVacunaCachorro() {
 }
 
 DtPerro::~DtPerro() {
-
   
 }

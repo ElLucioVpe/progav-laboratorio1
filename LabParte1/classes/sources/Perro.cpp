@@ -10,6 +10,10 @@ RazaPerro Perro::getRaza() {
 	return this->Raza;
 }
 
-boolean Perro::getVacunaCachorro() {
+bool Perro::getVacunaCachorro() {
 	return this->VacunaCachorro;
+}
+
+float Mascota::obtenerRacionDiaria() {
+    return 0;
 }

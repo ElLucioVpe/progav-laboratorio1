@@ -12,7 +12,7 @@ public:
 
 	virtual ~Perro();
 private:
-	RazaPerro raza;
+	RazaPerro Raza;
 	bool VacunaCachorro;
 };
 
