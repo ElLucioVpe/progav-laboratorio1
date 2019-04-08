@@ -5,7 +5,7 @@ DtGato::DtGato(TipoPelo _tipo,std::string NombreMascota, Genero& Genero, float P
 	this->Tipo = _tipo;
 }
 
-TipoPelo DtGato::GetPelo() const{
+TipoPelo DtGato::getPelo() const{
   return this->Tipo;
 }
 

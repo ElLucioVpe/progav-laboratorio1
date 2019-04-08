@@ -23,6 +23,8 @@ add_executable(LabParte1
         datatypes/headers/DtConsulta.h
         datatypes/headers/DtFecha.h
         datatypes/headers/DtMascota.h
+        datatypes/headers/DtGato.h
+        datatypes/sources/DtGato.cpp
         datatypes/headers/DtPerro.h
         datatypes/headers/Genero.h
         datatypes/headers/RazaPerro.h
