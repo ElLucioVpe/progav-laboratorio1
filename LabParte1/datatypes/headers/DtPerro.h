@@ -15,3 +15,6 @@ public:
   Boolean VacunaCachorro;
 
 }
+
+#endif /* DTPERRO_H */
+
