@@ -1,24 +1,25 @@
 #include "../headers/Consulta.h"
 #include <stdexcept>
 
-Consulta::Consulta (DtFecha& fechaConsulta, std::string motivo){
-	this->fechaConsulta = fechaConsulta;
-	this->motivo = motivo;
+Consulta::Consulta(DtFecha &_fechaConsulta, std::string _motivo, DtFecha fechaConsulta) : FechaConsulta(fechaConsulta) {
+	this->FechaConsulta = _fechaConsulta;
+	this->Motivo = _motivo;
 }
 	
 DtFecha Consulta::getFechaConsulta() const {
-	return this->fechaConsulta;
-}
-string Consulta::getMotivo() const {
-	return this->motivo;
-}
-	
-void Consulta::setFechaConsulta(DtFecha& fechaConsulta) const {
-	this->fechaConsulta = fechaConsulta;
+	return this->FechaConsulta;
 }
 
-void Consulta::setMotivo(std::string motivo) const{
-	this->motivo = motivo;
+std::string Consulta::getMotivo() const {
+	return this->Motivo;
+}
+	
+void Consulta::setFechaConsulta(DtFecha& fechaConsulta) {
+	this->FechaConsulta = fechaConsulta;
+}
+
+void Consulta::setMotivo(std::string motivo) {
+	this->Motivo = motivo;
 }
 	
 Consulta::~Consulta(){

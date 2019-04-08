@@ -1,2 +1,6 @@
 Ejercicio1/*
 *.exe
+*.o
+
+LabParte1/\.idea/
+LabParte1/cmake-build-debug/*

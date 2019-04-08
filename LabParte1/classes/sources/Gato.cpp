@@ -1,8 +1,9 @@
 #include "../headers/Gato.h"
-#include "../../datatypes/headers/TipoPelo.h"
-Gato::Gato(TipoPelo pelo) : Mascota(string NombreMascota, Genero& Genero, float Peso) {
-  this->TipoPelo = pelo;
+
+Gato::Gato(TipoPelo _tp, std::string _nombre, Genero _genero, float _peso) : Mascota(_nombre, _genero, _peso) {
+  this->Pelo = _tp;
 }
+
 TipoPelo Gato::getTipoPelo(){
   return this->Pelo;
 }

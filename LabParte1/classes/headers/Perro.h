@@ -6,12 +6,14 @@
 
 class Perro : public Mascota {
 public:
-	Perro(std::string Ci, std::string Nombre, Fecha& FechaIngreso, std::string NombreMascota, Genero& Genero, float Peso, RazaPerro raza, boolean VacunaCachorro);
+	Perro(RazaPerro raza, bool VacunaCachorro, std::string NombreMascota, Genero& Genero, float Peso);
 	RazaPerro getRaza();
-	boolean getVacunaCachorro();
+	bool getVacunaCachorro();
 
 	virtual ~Perro();
 private:
 	RazaPerro raza;
-	boolean VacunaCachorro;
-}
+	bool VacunaCachorro;
+};
+
+#endif /* PERRO_H */
