@@ -28,6 +28,7 @@ void ingresarConsulta(std::string motivo, std::string ci);
 DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas);
 void eliminarSocio(std::string ci);
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas);
+DtMascota crearDtMascota (std:string tipoMascota);
 
 int main(int argc, char** argv) {
 	int opcionUsuario;
@@ -48,7 +49,11 @@ int main(int argc, char** argv) {
         case 0:
             return 0;
         case 1:
-           // std::string nombrePersona, cedulaPersona, DtMascota        terminar aca.
+           	std::string cedulaPersona, nombrePersona, tipoMascota;
+            cout << "Ingrese en orden ci, nombre y que mascota tiene: ";
+            cin >> cedulaPersona >> nombrePersona >> tipoMascota; 
+        	DtMascota mascota = crearDtMascota(tipoMascota); 
+			registrarSocio(cedulaPersona, nombrePersona, mascota); 
             break;
         case 2:
             break;
@@ -115,3 +120,62 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 
 	return ejemplo;
 }
+
+//Auxiliares 
+DtMascota crearDtMascota (std:string tipoMascota){ 
+	std::string nombreMascota, generoMascota, tipoMascota;
+	float pesoMascota;
+	DtMascota mascota; 
+    if(tipoMascota == "Perro"){ 
+        std::string raza, vacuna; 
+        cout << "Ingrese en orden el nombre, genero, raza y si esta vacunada la mascota (Si/No)" 
+        cin >> nombreMascota >> generoMascota >> raza >> vacuna; 
+            	 
+		Genero genero; 
+        if (generoMascota == "Macho"){genero = Macho;} 
+        else{genero = Hembra;} 
+            	 
+        RazaPerro razaPerro; 
+		if(raza == "Labrador"){razaPerro = Labrador;} 
+		else{ 
+			if(raza == "Ovejero"){razaPerro = Ovejero;} 
+			else{ 
+				if(raza == "Bulldog"){razaPerro = Bulldog;} 
+				else{ 
+					if(raza == "Collie"){razaPerro = Collie;} 
+					else{ 
+						if(raza == "Pekines"){razaPerro = Pekines;} 
+						else{ 
+							if (raza == "Otro"){razaPerro = Otro;} 
+						} 
+					} 
+				} 
+			} 
+		} 
+            	 
+        boolean vacunabool = false; 
+        if (vacuna == "Si"){vacunabool = true;} 
+        mascota = new DtPerro(nombreMascota, genero, pesoMascota, vacunabool); 
+	} 
+	else{ 
+		std::string tipoPelo, vacuna; 
+        cout << "Ingrese en orden el nombre, genero, y su tipo de pelo" 
+        cin >> nombreMascota >> generoMascota >> tipoPelo; 
+             
+        Genero genero; 
+        if (generoMascota == "Macho"){genero = Macho;} 
+        else{genero = Hembra;} 
+            	 
+        TipoPelo pelo; 
+        if(tipoPelo == "Corto"){tipoPelo = Corto;} 
+		else{ 
+			if(tipoPelo == "Mediano"){tipoPelo = Mediano;} 
+			else{ 
+				if(tipoPelo == "Largo"){tipoPelo = Largo;} 
+			} 
+		} 
+		 
+		mascota = new DtGato(nombreMascota, genero, pesoMascota, pelo); 
+	} 
+	return mascota; 
+} 
