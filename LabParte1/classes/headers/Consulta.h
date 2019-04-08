@@ -1,19 +1,20 @@
 #ifndef CONSULTA_H
 #define CONSULTA_H
 
+#include <string>
 #include "../../datatypes/headers/DtFecha.h"
 
 class Consulta {
 private:
-	DtFecha fechaConsulta;
-	std::string motivo;
+	DtFecha FechaConsulta;
+	std::string Motivo;
 public:
-	Consulta(const DtFecha&, std::string);
+	Consulta(DtFecha &_fechaConsulta, std::string _motivo, DtFecha fechaConsulta);
 	DtFecha getFechaConsulta() const;
 	std::string getMotivo() const;
 	
-	void setFechaConsulta() const;
-	void setMotivo() const;
+	void setFechaConsulta(DtFecha& fechaConsulta);
+	void setMotivo(std::string motivo);
 	
 	virtual ~Consulta();
 };
