@@ -6,12 +6,15 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(classes/headers)
 include_directories(datatypes/headers)
 
+include_directories(classes/sources)
+include_directories(datatypes/sources)
+
 add_executable(LabParte1
         classes/headers/Consulta.h
         classes/headers/Gato.h
         classes/headers/Mascota.h
         classes/headers/Perro.h
-        classes/headers/socio.h
+        classes/headers/Socio.h
         classes/sources/Consulta.cpp
         classes/sources/Gato.cpp
         classes/sources/Mascota.cpp
@@ -26,4 +29,5 @@ add_executable(LabParte1
         datatypes/headers/TipoPelo.h
         datatypes/sources/DtFecha.cpp
         datatypes/sources/DtMascota.cpp
+        datatypes/sources/DtPerro.cpp
         main.cpp)

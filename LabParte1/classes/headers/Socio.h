@@ -14,6 +14,8 @@ public:
 	Socio(std::string ci, std::string nombre, const DtFecha & fechaIngreso);
 	std::string getCi() const;
 	std::string getNombre() const;
+    int getCantidadMascotas() const;
+
     DtFecha getFechaIngreso() const;
 
 	void agregarMascota(const Mascota&);

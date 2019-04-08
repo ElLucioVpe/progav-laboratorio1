@@ -1,17 +1,20 @@
 #include <iostream>
 #include <stdexcept>
 
+#include "datatypes/headers/Genero.h"
+#include "datatypes/headers/RazaPerro.h"
+#include "datatypes/headers/TipoPelo.h"
+
 #include "classes/headers/Consulta.h"
 #include "classes/headers/Mascota.h"
 #include "classes/headers/Perro.h"
 #include "classes/headers/Gato.h"
 #include "classes/headers/Socio.h"
+
 #include "datatypes/headers/DtConsulta.h"
 #include "datatypes/headers/DtMascota.h"
 #include "datatypes/headers/DtFecha.h"
-#include "datatypes/headers/Genero.h"
-#include "datatypes/headers/RazaPerro.h"
-#include "datatypes/headers/TipoPelo.h"
+
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
@@ -29,6 +32,8 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio,
 void eliminarSocio(std::string ci);
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas);
 DtMascota crearDtMascota (std:string tipoMascota);
+
+DtMascota *obtenerMascotaPorNombre(string basicString, int mascotas);
 
 int main(int argc, char** argv) {
 	int opcionUsuario;
@@ -71,12 +76,14 @@ int main(int argc, char** argv) {
 	return 0;
 }
 
-Socio* obtenerSocio(std::string ci, Socio** socios) {
+Socio* obtenerSocio(std::string ci) {
+
     for(int i = 0; i < cantidadSocios; i++) {
         if (socios[i]->getCi() == ci) {
             return socios[i];
         }
     }
+
     return NULL;
 }
 
@@ -84,17 +91,23 @@ void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMasco
 	if(cantidadSocios == MAX_SOCIOS) { 
 		throw std::invalid_argument("No se pueden agregar más socios."); 
 	} else { 
-		Socio* socio = obtenerSocio(ci);
+		Socio* socio = obtenerSocio(ci, socios);
  
-	    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); } 
- 
-	    Mascota* mascota = obtenerMascotaPorNombre(dtMascota); 
-	    socios[++cantidadSocios] = new Socio(ci, nombre, FechaIngreso, mascota); 
+	    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); }
+
+        DtMascota* mascota = obtenerMascotaPorNombre(dtMascota.getNombre(), socio->getCantidadMascotas());
+        socios[++cantidadSocios] = new Socio(ci, nombre, FechaIngreso, mascota);
 	    socio->agregarMascota(mascota); 
 	} 
 }
 
-void agregarMascota(std::string ci, const DtMascota& dtMascota){
+DtMascota *obtenerMascotaPorNombre(string nombre, int cantMascotas) {
+    return nullptr;
+}
+
+void agregarMascota(std::string _nombre, const Genero & _genero, float _peso, const Socio & _socio){
+    _socio.agregarMascota(new Mascota(_nombre, _genero, _peso));
+
 
 }
 

@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "../headers/DtFecha.h"
 
 DtFecha::DtFecha(int dia, int mes, int anio) {
