@@ -1,22 +1,23 @@
 #include "../headers/DtMascota.h"
 
-DtMascota::DtMascota(string nombre, const Genero& genero, float peso, float racionDiaria) : genero(genero){
-  this->nombre = nombre;
-  this->peso = peso;
-  this->racionDiaria = racionDiaria;
+DtMascota::DtMascota(std::string _nombre, const Genero & _genero, float _peso) : genero(_genero){
+  this->nombre = _nombre;
+  this->peso = _peso;
 }
-string DtMascota::getNombre() const {
+
+std::string DtMascota::getNombre() const {
   return this->nombre;
 }
 Genero DtMascota::getGenero() const {
-  return this->Genero;
+  return this->genero;
 }
 float DtMascota::getPeso() const {
-  return this->Peso;
+  return this->peso;
 }
 float DtMascota::getRacionDiaria() const {
   return this->racionDiaria;
 }
 
 DtMascota::~DtMascota() {
+
 }
