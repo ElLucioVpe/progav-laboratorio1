@@ -22,7 +22,6 @@ private:
 >>>>>>> Stashed changes
   RazaPerro Raza;
   bool VacunaCachorro;
-
 };
 
 #endif /* DTPERRO_H */

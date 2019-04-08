@@ -2,7 +2,7 @@
 #define MASCOTA_H
 
 #include <string>
-#include "../../datatypes/headers/Genero.h"
+//#include <Genero.h>
 
 class Mascota {
 public:
