@@ -10,7 +10,7 @@ public:
     DtFecha getFechaConsulta() const;
     std::string getMotivo() const;
 
-    virutal ~DtConsulta();*/
+    virtual ~DtConsulta();*/
  private:
    DtFecha fecha;
    std::string motivo;
