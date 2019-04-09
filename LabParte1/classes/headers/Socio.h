@@ -19,7 +19,8 @@ public:
     DtFecha getFechaIngreso() const;
 
 	void agregarMascota(Mascota);
-
+Mascota getMascota();
+void Socio::setMascota(Mascota** mascotas, int CantidadMascotas);
 	virtual ~Socio();
 private:
 	std::string Ci;
