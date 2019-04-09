@@ -104,10 +104,14 @@ void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMasco
  
 	    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); }
 
-	    socios[cantidadSocios] = new Socio(ci, nombre, DtFecha(0, 0, 0)); //Agregar dia, mes y año actuales a DtFecha
+	    socios[cantidadSocios] = new Socio(ci, nombre, DtFecha(0, 0, 0)); //Agregar dia, mes y aï¿½o actuales a DtFecha
 	    socios[cantidadSocios]->agregarMascota(dtMascota);
 	    cantidadSocios++;
 	}
+        DtMascota* mascota = agregarMascota(dtMascota.getNombre(), socio->getCantidadMascotas());
+        socios[++cantidadSocios] = new Socio(ci, nombre, FechaIngreso, mascota);
+	    socio->agregarMascota(mascota); 
+	} 
 }
 
 void agregarMascota(std::string ci, const DtMascota& dtMascota){
@@ -116,6 +120,10 @@ void agregarMascota(std::string ci, const DtMascota& dtMascota){
 	if (socio == NULL) { throw std::invalid_argument("No existe un socio con la ci ingresada"); }
 	
 	socio->agregarMascota(dtMascota);
+}
+
+void agregarMascota(Socio & _socio, std::string _nombre, Genero & _genero, float _peso){
+    _socio.agregarMascota(Mascota(_nombre, _genero, _peso));
 }
 
 void ingresarConsulta(std::string motivo, std::string ci){
@@ -144,7 +152,7 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 }
 
 //Auxiliares 
-DtMascota crearDtMascota (std:string tipoMascota){ 
+DtMascota crearDtMascota (std::string tipoMascota){
 	std::string nombreMascota, generoMascota, tipoMascota;
 	float pesoMascota;
 	DtMascota mascota; 
