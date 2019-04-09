@@ -4,6 +4,7 @@ Socio::Socio(std::string ci, std::string nombre, const DtFecha & _fechaIngreso) 
 	this->Ci = ci;
 	this->Nombre = nombre;
 	this->mascotas = new Mascota*[MAX_MASCOTAS]
+	this->consultas = new Consulta*[MAX_CONSULTAS]
 }
 
 std::string Socio::getCi() const {
@@ -36,6 +37,15 @@ Mascota** Socio::getMascota() const {
 void Socio::setMascota(Mascota** mascotas, int CantidadMascotas) {
 this->mascotas= mascotas;
 this->CantidadMascotas = CantidadMascotas;
+}
+
+void Socio::getConsulta() const {
+		return this->consultas;
+}
+
+void Socio::setConsulta(Consulta** consultas, int CantidadConsultas) const {
+	this->consultas= consultas;
+	this->CantidadConsultas= CantidadConsultas;
 }
 Socio::~Socio() {
 

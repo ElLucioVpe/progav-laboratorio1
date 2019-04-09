@@ -20,7 +20,9 @@ public:
 
 	void agregarMascota(Mascota);
 Mascota getMascota();
-void Socio::setMascota(Mascota** mascotas, int CantidadMascotas);
+void setMascota(Mascota** mascotas, int CantidadMascotas);
+consulta getConsulta();
+void setConsulta(Consulta** consultas, int CantidadConsultas);
 	virtual ~Socio();
 private:
 	std::string Ci;
