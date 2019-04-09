@@ -3,6 +3,7 @@
 Socio::Socio(std::string ci, std::string nombre, const DtFecha & _fechaIngreso) : FechaIngreso(_fechaIngreso) {
 	this->Ci = ci;
 	this->Nombre = nombre;
+	this->mascotas = new Mascota*[MAX_MASCOTAS]
 }
 
 std::string Socio::getCi() const {
@@ -29,8 +30,13 @@ void Socio::agregarMascota(Mascota m1) {
 int Socio::getCantidadMascotas() const {
     return this->CantidadMascotas;
 }
-
-
+Mascota** Socio::getMascota() const {
+	return this->mascotas;
+}
+void Socio::setMascota(Mascota** mascotas, int CantidadMascotas) {
+this->mascotas= mascotas;
+this->CantidadMascotas = CantidadMascotas;
+}
 Socio::~Socio() {
 
 }
