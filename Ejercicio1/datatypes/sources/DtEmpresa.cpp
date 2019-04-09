@@ -14,4 +14,3 @@ Direccion DtEmpresa::getDireccion() const {
 
 DtEmpresa::~DtEmpresa() {
 }
-
