@@ -18,7 +18,7 @@ public:
 
     DtFecha getFechaIngreso() const;
 
-	void agregarMascota(const Mascota&);
+	void agregarMascota(Mascota);
 
 	virtual ~Socio();
 private:

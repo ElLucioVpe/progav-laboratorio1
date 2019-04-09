@@ -8,19 +8,11 @@
 
 class DtGato : public DtMascota {
 public:
-<<<<<<< Updated upstream
     DtGato (TipoPelo Tipo, std::string NombreMascota, Genero& Genero, float Peso);
-    TipoPelo getPelo(); const;
+    TipoPelo getPelo() const;
 
 private:
-    DtPerro (std::string NombreMascota, Genero& Genero const, float Peso, TipoPelo& Tipo);
-      TipoPelo getPelo(); const;
-}
-
-Private:
->>>>>>> Stashed changes
-TipoPelo tipo;
-
+    TipoPelo Tipo;
 };
 
 #endif /* DTGATO_H */

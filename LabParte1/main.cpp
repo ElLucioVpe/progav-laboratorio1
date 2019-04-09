@@ -15,7 +15,6 @@
 #include "datatypes/headers/DtMascota.h"
 #include "datatypes/headers/DtFecha.h"
 
-
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
@@ -32,8 +31,7 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio,
 void eliminarSocio(std::string ci);
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas);
 DtMascota crearDtMascota (std:string tipoMascota);
-
-DtMascota *obtenerMascotaPorNombre(string basicString, int mascotas);
+DtMascota* obtenerMascotaPorNombre(string basicString, int mascotas);
 
 int main(int argc, char** argv) {
 	int opcionUsuario;
@@ -61,8 +59,17 @@ int main(int argc, char** argv) {
 			registrarSocio(cedulaPersona, nombrePersona, mascota); 
             break;
         case 2:
+        	std::string ci;
+        	cout << "Ingrese la cedula del socio a eliminar: ";
+        	cin >> ci;
+        	eliminarSocio(ci);
             break;
         case 3:
+        	std::string ci, tipoMascota;
+        	cout << "Ingrese la cedula del socio al cual quiere agregar una mascota, seguido del tipo de mascota: ";
+        	cin >> ci >> tipoMascota;
+        	DtMascota mascota = crearDtMascota(tipoMascota);
+        	agregarMascota(ci, mascota);
             break;
         case 4:
             break;
@@ -71,48 +78,58 @@ int main(int argc, char** argv) {
         case 6:
             break;
         default:
-            throw std::invalid_argument("La opcion ingresada no es correct");     }
-    //cout << "   " << endl;
+            throw std::invalid_argument("La opcion ingresada no es correcta");     
+	}
 	return 0;
 }
 
 Socio* obtenerSocio(std::string ci) {
-
     for(int i = 0; i < cantidadSocios; i++) {
         if (socios[i]->getCi() == ci) {
             return socios[i];
         }
     }
-
     return NULL;
+}
+
+DtMascota* obtenerMascotaPorNombre(string nombre, int cantMascotas) {
+    return nullptr;
 }
 
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota){
 	if(cantidadSocios == MAX_SOCIOS) { 
-		throw std::invalid_argument("No se pueden agregar más socios."); 
+		throw std::invalid_argument("No se pueden agregar mas socios."); 
 	} else { 
-		Socio* socio = obtenerSocio(ci, socios);
+		Socio* socio = obtenerSocio(ci);
  
 	    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); }
 
-        DtMascota* mascota = obtenerMascotaPorNombre(dtMascota.getNombre(), socio->getCantidadMascotas());
+	    socios[cantidadSocios] = new Socio(ci, nombre, DtFecha(0, 0, 0)); //Agregar dia, mes y a�o actuales a DtFecha
+	    socios[cantidadSocios]->agregarMascota(dtMascota);
+	    cantidadSocios++;
+	}
+        DtMascota* mascota = agregarMascota(dtMascota.getNombre(), socio->getCantidadMascotas());
         socios[++cantidadSocios] = new Socio(ci, nombre, FechaIngreso, mascota);
 	    socio->agregarMascota(mascota); 
 	} 
 }
 
-DtMascota *obtenerMascotaPorNombre(string nombre, int cantMascotas) {
-    return nullptr;
+void agregarMascota(std::string ci, const DtMascota& dtMascota){
+	Socio* socio = obtenerSocio(ci);
+ 
+	if (socio == NULL) { throw std::invalid_argument("No existe un socio con la ci ingresada"); }
+	
+	socio->agregarMascota(dtMascota);
 }
 
-void agregarMascota(std::string _nombre, const Genero & _genero, float _peso, const Socio & _socio){
-    _socio.agregarMascota(new Mascota(_nombre, _genero, _peso));
-
-
+void agregarMascota(Socio & _socio, std::string _nombre, Genero & _genero, float _peso){
+    _socio.agregarMascota(Mascota(_nombre, _genero, _peso));
 }
 
 void ingresarConsulta(std::string motivo, std::string ci){
-
+	//Socio* socio = obtenerSocio(ci);
+	//if (socio == NULL) { throw std::invalid_argument("No existe un socio con la ci ingresada"); }
+	//socio->agregarConsulta(DtFecha(dia, mes, anio), motivo);
 }
 
 DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas){
@@ -135,7 +152,7 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 }
 
 //Auxiliares 
-DtMascota crearDtMascota (std:string tipoMascota){ 
+DtMascota crearDtMascota (std::string tipoMascota){
 	std::string nombreMascota, generoMascota, tipoMascota;
 	float pesoMascota;
 	DtMascota mascota; 
