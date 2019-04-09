@@ -29,5 +29,33 @@ bool DtFecha::isValid() {
             this->anio >= 1900;
 }
 
+bool DtFecha::operator<(DtFecha f) {
+	if (this->anio > f->anio){ //Comparo anios
+		return false;
+	}else{
+		if (this->anio < f->anio){ 
+			return true;
+		}else{
+			if (this->mes > f->mes){ //Comparo meses
+				return false;
+			}else{
+				if (this->mes < f->mes){
+					return true;
+				}else{
+					if (this->dia > f->dia){ //Comparo dias
+						return false;
+					}else{
+						if (this->dia < f->dia){
+							return true;
+						}else{
+							return false;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 DtFecha::~DtFecha() {
 }

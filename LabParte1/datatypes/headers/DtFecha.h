@@ -14,7 +14,8 @@ public:
     int getDia() const;
     int getMes() const;
     int getAnio() const;
-
+	bool operator<(DtFecha);
+	
     virtual ~DtFecha();
 };
 
