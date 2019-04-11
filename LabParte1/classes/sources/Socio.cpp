@@ -37,7 +37,7 @@ void Socio::agregarMascota(DtMascota m1) {
     }
 }
 
-void agregarConsulta(Consulta c1) {
+void Socio::agregarConsulta(Consulta c1) {
 	if (this->CantidadConsultas == MAX_CONSULTAS) {
 		throw std::invalid_argument("El socio no puede hacer más consultas.");
 	} else {

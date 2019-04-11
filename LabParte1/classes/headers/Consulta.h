@@ -1,7 +1,7 @@
 #ifndef CONSULTA_H
 #define CONSULTA_H
 
-//#include <string>
+#include <string>
 #include "../../datatypes/headers/DtFecha.h"
 
 class Consulta {

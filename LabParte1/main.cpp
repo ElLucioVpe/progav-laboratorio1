@@ -113,6 +113,9 @@ int main(int argc, char** argv) {
                     cin >> dia >> mes >> anio;
                     DtConsulta** consultas = verConsultasAntesDeFecha(new DtFecha(dia, mes, anio), ci, cantConsultas);
                     //Mostrar el contenido del arreglo
+					for (int i=0, i < consultas.length(), i++) {
+						// cout << (i +1) << " - " << consultas[i]->motivo; //???
+					}
                     break;
                 }
 				default:
@@ -170,20 +173,42 @@ void agregarMascota(std::string ci, const DtMascota& dtMascota){
 	socio->agregarMascota(dtMascota);
 }
 
-/*void agregarMascota(Socio & _socio, std::string _nombre, Genero & _genero, float _peso){
-    _socio.agregarMascota(Mascota(_nombre, _genero, _peso));
-}*/
-
 void ingresarConsulta(std::string motivo, std::string ci){
-	//Socio* socio = obtenerSocio(ci);
-	//if (socio == NULL) { throw std::invalid_argument("No existe un socio con la ci ingresada"); }
-	//socio->agregarConsulta(DtFecha(dia, mes, anio), motivo);
+	Socio* socio = obtenerSocio(ci);
+	
+	if (socio == NULL) { 
+		throw std::invalid_argument("No existe un socio con la ci ingresada"); 
+	}
+	
+	std::time_t t = std::time(0);      // Obtener tiempo actual
+	std::tm* now = std::localtime(&t); //
+	
+	DtConsulta consulta = new DtConsulta(DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900), motivo);
+	socio->agregarConsulta(consulta);
 }
 
-DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas){
-	DtConsulta** ejemplo = NULL;
-
-	return ejemplo;
+DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio, int& cantConsultas){
+	Socio* socio = obtenerSocio(ciSocio);
+	
+	if (socio == NULL) { 
+		throw std::invalid_argument("No existe un socio con la ci ingresada"); 
+	}
+	
+	DtConsulta** retornoConsultas = new DtConsulta*[cantConsultas];
+	Consulta** consultasSocio = socio->getConsulta();
+	
+	int j = 0;
+	for (int i=0, i < cantConsultas, i++) {
+		if ((consultasSocio[i]->getFechaConsulta()) < Fecha) {
+			retornoConsultas[j] = consultas[i];
+			j++;
+		}
+	}
+	
+	if (retornoConsultas == NULL) {
+		throw std::invalid_argument("No existen consultas antes de esa fecha"); 
+	}
+	return retornoConsultas;
 }
 
 void eliminarSocio(std::string ci){
