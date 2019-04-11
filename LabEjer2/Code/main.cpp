@@ -3,12 +3,10 @@
 class claseA;
 class claseB;
 class claseC;
+
 #include "A.h"
 #include "B.h"
 #include "C.h"
-
-
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
 
@@ -20,9 +18,21 @@ int main(int argc, char** argv) {
     ab->setB(5);
     ax->setA(8);
 
+    ax->setC(*ac);
+    ax->setB(*ab);
+
+    ab->setA(*ax);
+    ab->setC(*ac);
+
+    ac->setA(*ax);
+    ac->setB(*ab);
+
     ax->printA();
     ab->printB();
     ac->printC();
+
+    // Accedemos a el valor de B desde A solamente porque queremos y podemos
+    std::cout << ax->getBVal();
 
     return 0;
 }

@@ -18,3 +18,11 @@ void claseB::setB(int bN){
 int claseB::getB(){
     return this->b;
 }
+
+void claseB::setA(claseA & a) {
+    this->a = &a;
+}
+
+void claseB::setC(claseC & c) {
+    this->c = &c;
+}
