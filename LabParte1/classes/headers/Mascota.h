@@ -6,7 +6,7 @@
 
 class Mascota {
 	public:
-		Mascota(std::string _nombre, Genero& _genero, float _peso);
+		Mascota(std::string _nombre, Genero & _genero, float _peso);
 		virtual float obtenerRacionDiaria();
 	private:
 		std::string Nombre;

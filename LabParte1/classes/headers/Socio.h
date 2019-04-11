@@ -23,20 +23,15 @@ class Socio {
 		void setMascota(Mascota** mascotas, int CantidadMascotas);
 		void setConsulta(Consulta** consultas, int CantidadConsultas);
 
-		void agregarMascota(Mascota);
-	
-		virtual ~Socio();
-		
+		void agregarMascota(DtMascota m1);
 	private:
 		std::string Ci;
 		std::string Nombre;
 		DtFecha FechaIngreso;
-		int CantidadMascotas;
+		int CantidadMascotas = 0;
 		Consulta** Consultas;
 		Mascota** Mascotas;
-		int CantidadConsultas;
-		static const int MAX_MASCOTAS = 10;
-		static const int MAX_CONSULTAS = 20;
+		int CantidadConsultas = 0;
 };
 
 #endif /* SOCIO_H */

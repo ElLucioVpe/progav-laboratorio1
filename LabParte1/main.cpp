@@ -29,7 +29,7 @@ int cantidadSocios = 0;
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota);
 void agregarMascota(std::string ci, const DtMascota& dtMascota);
 void ingresarConsulta(std::string motivo, std::string ci);
-DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas);
+DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio, int& cantConsultas);
 void eliminarSocio(std::string ci);
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas);
 DtMascota crearDtMascota (std::string tipoMascota);
@@ -103,7 +103,8 @@ int main(int argc, char** argv) {
                 }
 				case 6:
                 {
-                    int dia, mes, anio, cantConsultas, ci;
+                    int dia, mes, anio, cantConsultas;
+                    std::string ci;
                     cout << "Ingrese la ci del socio: ";
                     cin >> ci;
                     cout << "Ingrese la cantidad de consultas que desea ver: ";
