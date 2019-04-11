@@ -1,11 +1,12 @@
 #ifndef DTCONSULTA_H
 #define DTCONSULTA_H
 
+#include <string>
 #include "DtFecha.h"
 
 class DtConsulta {
    public:
-      DtConsulta(DtFecha, std::string);
+      DtConsulta(std::string motivo, DtFecha & fechaConsulta);
       DtFecha getFechaConsulta() const;
       std::string getMotivo() const;
 

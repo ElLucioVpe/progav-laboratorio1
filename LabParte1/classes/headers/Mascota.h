@@ -1,7 +1,7 @@
 #ifndef MASCOTA_H
 #define MASCOTA_H
 
-//#include <string>
+#include <string>
 #include "../../datatypes/headers/Genero.h"
 
 class Mascota {
