@@ -15,6 +15,9 @@
 #include "datatypes/headers/DtConsulta.h"
 #include "datatypes/headers/DtMascota.h"
 #include "datatypes/headers/DtFecha.h"
+#include "datatypes/headers/DtPerro.h"
+#include "datatypes/headers/DtGato.h"
+
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
