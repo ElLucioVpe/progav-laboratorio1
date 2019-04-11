@@ -30,22 +30,22 @@ bool DtFecha::isValid() {
 }
 
 bool DtFecha::operator<(DtFecha f) {
-	if (this->anio > f->anio){ //Comparo anios
+	if (this->anio > f.anio){ //Comparo anios
 		return false;
 	}else{
-		if (this->anio < f->anio){ 
+		if (this->anio < f.anio){
 			return true;
 		}else{
-			if (this->mes > f->mes){ //Comparo meses
+			if (this->mes > f.mes){ //Comparo meses
 				return false;
 			}else{
-				if (this->mes < f->mes){
+				if (this->mes < f.mes){
 					return true;
 				}else{
-					if (this->dia > f->dia){ //Comparo dias
+					if (this->dia > f.dia){ //Comparo dias
 						return false;
 					}else{
-						if (this->dia < f->dia){
+						if (this->dia < f.dia){
 							return true;
 						}else{
 							return false;

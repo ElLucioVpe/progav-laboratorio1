@@ -69,3 +69,7 @@ void Socio::setConsulta(Consulta** consultas, int CantidadConsultas)  {
 	this->Consultas= consultas;
 	this->CantidadConsultas= CantidadConsultas;
 }
+
+Socio::~Socio() {
+
+}
