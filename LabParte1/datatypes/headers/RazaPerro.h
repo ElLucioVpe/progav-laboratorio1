@@ -1,4 +1,4 @@
-enum class RazaPerro {
+enum class RazaPerro{
 	Labrador,
 	Ovejero,
 	Bulldog,

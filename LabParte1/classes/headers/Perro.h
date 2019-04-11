@@ -6,15 +6,15 @@
 #include "Mascota.h"
 
 class Perro : public Mascota {
-public:
-	Perro(RazaPerro raza, bool VacunaCachorro, std::string NombreMascota, Genero& Genero, float Peso);
-	RazaPerro getRaza();
-	bool getVacunaCachorro();
+	public:
+		Perro(RazaPerro raza, bool VacunaCachorro, std::string NombreMascota, Genero& Genero, float Peso);
+		RazaPerro getRaza();
+		bool getVacunaCachorro();
 
-	virtual ~Perro();
-private:
-	RazaPerro Raza;
-	bool VacunaCachorro;
+		virtual ~Perro();
+	private:
+		RazaPerro Raza;
+		bool VacunaCachorro;
 };
 
 #endif /* PERRO_H */

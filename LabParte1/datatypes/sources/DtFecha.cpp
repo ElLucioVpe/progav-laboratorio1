@@ -25,7 +25,7 @@ int DtFecha::getAnio() const {
 
 bool DtFecha::isValid() {
     return this->dia >= 1 && this->dia <= 31 &&
-            this->mes >= 1 && this->mes <= 12 &&
+        	this->mes >= 1 && this->mes <= 12 &&
             this->anio >= 1900;
 }
 

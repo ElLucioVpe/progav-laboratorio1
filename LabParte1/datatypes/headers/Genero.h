@@ -1,5 +1,4 @@
-enum class Genero
-{
+enum class Genero{
     Macho,
     Hembra,
 };

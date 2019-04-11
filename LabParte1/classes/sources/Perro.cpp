@@ -1,5 +1,5 @@
-#include "../headers/Perro.h"
-//#include "../../datatypes/headers/RazaPerro.h"
+#include "../classes/headers/Perro.h"
+#include "../../datatypes/headers/RazaPerro.h"
 
 Perro::Perro(RazaPerro _Raza, bool _VacunaCachorro, std::string _NombreMascota, Genero& _Genero, float _Peso) : Mascota(_NombreMascota, _Genero, _Peso) {
 	this->Raza = _Raza;

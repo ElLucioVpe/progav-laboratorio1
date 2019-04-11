@@ -1,5 +1,4 @@
-enum class TipoPelo
-{
+enum class TipoPelo{
     Corto,
     Mediano,
     Largo,

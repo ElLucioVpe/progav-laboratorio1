@@ -4,16 +4,15 @@
 #include "DtFecha.h"
 
 class DtConsulta {
-public:
-    dtConsulta(DtFecha, std::string);
+   public:
+      DtConsulta(DtFecha, std::string);
+      DtFecha getFechaConsulta() const;
+      std::string getMotivo() const;
 
-    DtFecha getFechaConsulta() const;
-    std::string getMotivo() const;
-
-    virtual ~DtConsulta();
- private:
-   DtFecha fecha;
-   std::string motivo;
+      virtual ~DtConsulta();
+   private:
+      DtFecha fecha;
+      std::string motivo;
 };
 
 #endif /* DTCONSULTA_H */

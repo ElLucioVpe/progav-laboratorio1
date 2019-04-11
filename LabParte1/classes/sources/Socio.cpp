@@ -1,10 +1,15 @@
 #include "../headers/Socio.h"
 
+#include <stdexcept>
+const int MAX_MASCOTAS = 10;
+const int MAX_CONSULTAS = 20; 
+
+
 Socio::Socio(std::string ci, std::string nombre, const DtFecha & _fechaIngreso) : FechaIngreso(_fechaIngreso) {
 	this->Ci = ci;
 	this->Nombre = nombre;
-	this->mascotas = new Mascota*[MAX_MASCOTAS]
-	this->consultas = new Consulta*[MAX_CONSULTAS]
+	this->Mascotas = new Mascota*[MAX_MASCOTAS];
+	this->Consultas = new Consulta*[MAX_CONSULTAS];
 }
 
 std::string Socio::getCi() const {
@@ -31,22 +36,25 @@ void Socio::agregarMascota(Mascota m1) {
 int Socio::getCantidadMascotas() const {
     return this->CantidadMascotas;
 }
-Mascota** Socio::getMascota() const {
-	return this->mascotas;
+
+Mascota** Socio::getMascota()  {
+	return this->Mascotas;
 }
+
 void Socio::setMascota(Mascota** mascotas, int CantidadMascotas) {
-this->mascotas= mascotas;
-this->CantidadMascotas = CantidadMascotas;
+	this->Mascotas= mascotas;
+	this->CantidadMascotas = CantidadMascotas;
 }
 
-void Socio::getConsulta() const {
-		return this->consultas;
+Consulta** Socio::getConsulta()  {
+		return this->Consultas;
 }
 
-void Socio::setConsulta(Consulta** consultas, int CantidadConsultas) const {
-	this->consultas= consultas;
+void Socio::setConsulta(Consulta** consultas, int CantidadConsultas)  {
+	this->Consultas= consultas;
 	this->CantidadConsultas= CantidadConsultas;
 }
+
 Socio::~Socio() {
 
 }

@@ -20,8 +20,8 @@
 using namespace std;
 
 const int MAX_SOCIOS = 50;
-const int MAX_MASCOTAS = 10;
-const int MAX_CONSULTAS = 20; 
+//const int MAX_MASCOTAS = 10;
+//const int MAX_CONSULTAS = 20; 
 
 Socio** socios = new Socio* [MAX_SOCIOS];
 int cantidadSocios = 0;
@@ -37,69 +37,76 @@ DtMascota* obtenerMascotaPorNombre(string basicString, int mascotas);
 
 int main(int argc, char** argv) {
 	int opcionUsuario;
-	cout << "Bienvenido al sistema" << endl;
-    cout << "\t\tLos comandos se mostraran tras elegir una opcion.\n\n" << endl;
-    //Opciones para el Usuario.
-    cout << "\tElegir una Opcion:\n" << endl;
-    cout << "1 Registrar Socio.\n" << endl;
-    cout << "2 Eliminar Socio.\n" << endl;
-    cout << "3 Agregar Mascota.\n" << endl;             //Solo cuando el socio a agregar ya existe. Osea la 2da o mas mascota del socio.
-    cout << "4 Mostrar Lista de Mascotas.\n" << endl;   //Lista mascotas por ci de socio.
-    cout << "5 Ingresar Consulta.\n" << endl;           //Pregunta de Usuario a un socio existente.
-    cout << "6 Ver Consutas antes de una fecha.\n" << endl; 
-    cout << "Pulse 0 para salir.\n" << endl;
+	while(true){
+		cout << "Bienvenido al sistema" << endl;
+		cout << "\t\tLos comandos se mostraran tras elegir una opcion.\n\n" << endl;
+		//Opciones para el Usuario.
+		cout << "\tElegir una Opcion:\n" << endl;
+		cout << "1 Registrar Socio.\n" << endl;
+		cout << "2 Eliminar Socio.\n" << endl;
+		cout << "3 Agregar Mascota.\n" << endl;             //Solo cuando el socio a agregar ya existe. Osea la 2da o mas mascota del socio.
+		cout << "4 Mostrar Lista de Mascotas.\n" << endl;   //Lista mascotas por ci de socio.
+		cout << "5 Ingresar Consulta.\n" << endl;           //Pregunta de Usuario a un socio existente.
+		cout << "6 Ver Consutas antes de una fecha.\n" << endl; 
+		cout << "Pulse 0 para salir.\n" << endl;
 
+		try {
 
-    switch(opcionUsuario){
-        case 0:
-            return 0;
-        case 1:
-           	std::string cedulaPersona, nombrePersona, tipoMascota;
-            cout << "Ingrese en orden ci, nombre y que mascota tiene: ";
-            cin >> cedulaPersona >> nombrePersona >> tipoMascota; 
-        	DtMascota mascota = crearDtMascota(tipoMascota); 
-			registrarSocio(cedulaPersona, nombrePersona, mascota); 
-            break;
-        case 2:
-        	std::string ci;
-        	cout << "Ingrese la cedula del socio a eliminar: ";
-        	cin >> ci;
-        	eliminarSocio(ci);
-            break;
-        case 3:
-        	std::string ci, tipoMascota;
-        	cout << "Ingrese la cedula del socio al cual quiere agregar una mascota, seguido del tipo de mascota: ";
-        	cin >> ci >> tipoMascota;
-        	DtMascota mascota = crearDtMascota(tipoMascota);
-        	agregarMascota(ci, mascota);
-            break;
-        case 4:
-        	std::string ci;
-        	int cantMascotas;
-        	out << "Ingrese la cedula del socio y la cantidad de mascotas: ";
-        	cin >> ci >> cantMascotas;
-        	DtMascota** mascotas = obtenerMascotas(ci, cantMascotas);
-        	//Mostrar el contenido del arreglo, probablemente solo nombre y tipo
-            break;
-        case 5:
-        	std::string ci, motivo;
-			cout << "Ingrese su cedula: ";
-			cin >> ci;
-			cout << "\nIngrese su consulta: ";
-			cin >> motivo;
-			ingresarConsulta(motivo, ci);
-            break;
-        case 6:
-        	int dia, mes, anio, cantConsultas;
-        	cout << "Ingrese la cantidad de consultas que desea ver: ";
-        	cin >> cantConsultas;
-			cout << "\nIngrese una fecha (dia mes anio), se mostraran todas las consultas anteriores a esta: ";
-			cin >> dia >> mes >> anio;
-			DtConsulta** consultas = verConsultasAntesDeFecha(new DtFecha(dia, mes, anio), ci, cantConsultas);
-			//Mostrar el contenido del arreglo
-            break;
-        default:
-            throw std::invalid_argument("La opcion ingresada no es correcta");     
+			switch(opcionUsuario){
+				case 0:
+					return 0;
+				case 1:
+					std::string cedulaPersona, nombrePersona, tipoMascota;
+					cout << "Ingrese en orden ci, nombre y que mascota tiene: ";
+					cin >> cedulaPersona >> nombrePersona >> tipoMascota; 
+					DtMascota mascota = crearDtMascota(tipoMascota); 
+					registrarSocio(cedulaPersona, nombrePersona, mascota); 
+					break;
+				case 2:
+					std::string ci;
+					cout << "Ingrese la cedula del socio a eliminar: ";
+					cin >> ci;
+					eliminarSocio(ci);
+					break;
+				case 3:
+					std::string ci, tipoMascota;
+					cout << "Ingrese la cedula del socio al cual quiere agregar una mascota, seguido del tipo de mascota: ";
+					cin >> ci >> tipoMascota;
+					DtMascota mascota = crearDtMascota(tipoMascota);
+					agregarMascota(ci, mascota);
+					break;
+				case 4:
+					std::string ci;
+					int cantMascotas;
+					out << "Ingrese la cedula del socio y la cantidad de mascotas: ";
+					cin >> ci >> cantMascotas;
+					DtMascota** mascotas = obtenerMascotas(ci, cantMascotas);
+					//Mostrar el contenido del arreglo, probablemente solo nombre y tipo
+					break;
+				case 5:
+					std::string ci, motivo;
+					cout << "Ingrese su cedula: ";
+					cin >> ci;
+					cout << "\nIngrese su consulta: ";
+					cin >> motivo;
+					ingresarConsulta(motivo, ci);
+					break;
+				case 6:
+					int dia, mes, anio, cantConsultas;
+					cout << "Ingrese la cantidad de consultas que desea ver: ";
+					cin >> cantConsultas;
+					cout << "\nIngrese una fecha (dia mes anio), se mostraran todas las consultas anteriores a esta: ";
+					cin >> dia >> mes >> anio;
+					DtConsulta** consultas = verConsultasAntesDeFecha(new DtFecha(dia, mes, anio), ci, cantConsultas);
+					//Mostrar el contenido del arreglo
+					break;
+				default:
+					throw std::invalid_argument("La opcion ingresada no es correcta");     
+			}
+		}
+		catch(std::invalid_argument &arroz){
+			cout << "Error " << arroz.what() << endl;
+		}
 	}
 	return 0;
 }
@@ -120,12 +127,12 @@ DtMascota* obtenerMascotaPorNombre(string nombre, int cantMascotas) {
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota){
 	if(cantidadSocios == MAX_SOCIOS) { 
 		throw std::invalid_argument("No se pueden agregar mas socios."); 
-	} 
-	else { 
+	}else { 
 		Socio* socio = obtenerSocio(ci);
  
-	    if (socio != NULL) { throw std::invalid_argument("Ya existe un socio con la ci ingresada"); }
-		
+	    if (socio != NULL) { 
+			throw std::invalid_argument("Ya existe un socio con la ci ingresada");
+		}
 		std::time_t t = std::time(0);      // Obtener tiempo actual
     	std::tm* now = std::localtime(&t); //
 
@@ -138,11 +145,13 @@ void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMasco
 	    socio->agregarMascota(mascota);*/
 }
 
+
 void agregarMascota(std::string ci, const DtMascota& dtMascota){
 	Socio* socio = obtenerSocio(ci);
  
-	if (socio == NULL) { throw std::invalid_argument("No existe un socio con la ci ingresada"); }
-	
+	if (socio == NULL) { 
+		throw std::invalid_argument("No existe un socio con la ci ingresada"); 
+	}
 	socio->agregarMascota(dtMascota);
 }
 
@@ -164,7 +173,9 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio,
 
 void eliminarSocio(std::string ci){
 	Socio* socio = obtenerSocio(ci);
-	if (socio == NULL) { throw std::invalid_argument("No existe el socio que quiere eliminar"); }
+	if (socio == NULL) { 
+		throw std::invalid_argument("No existe el socio que quiere eliminar"); 
+	}
 	delete socio;
 	std::cout << "El Socio se ha eliminado efectivamente" << '\n';
 }
@@ -190,21 +201,31 @@ DtMascota crearDtMascota (std::string tipoMascota){
         cin >> nombreMascota >> generoMascota >> raza >> vacuna; 
             	 
 		Genero genero; 
-        if (generoMascota == "Macho"){genero = Macho;} 
-        else{genero = Hembra;} 
+        if (generoMascota == "Macho"){
+			genero = Macho;
+		}else{
+			genero = Hembra;
+		} 
             	 
         RazaPerro razaPerro; 
-		if(raza == "Labrador"){razaPerro = Labrador;} 
-		else{ 
-			if(raza == "Ovejero"){razaPerro = Ovejero;} 
-			else{ 
-				if(raza == "Bulldog"){razaPerro = Bulldog;} 
-				else{ 
-					if(raza == "Collie"){razaPerro = Collie;} 
+		if(raza == "Labrador"){
+			razaPerro = Labrador;
+		}else{ 
+			if(raza == "Ovejero"){
+				razaPerro = Ovejero;
+			}else{ 
+				if(raza == "Bulldog"){
+					razaPerro = Bulldog;
+				}else{ 
+					if(raza == "Collie"){
+						razaPerro = Collie;
 					else{ 
-						if(raza == "Pekines"){razaPerro = Pekines;} 
-						else{ 
-							if (raza == "Otro"){razaPerro = Otro;} 
+						if(raza == "Pekines"){
+							razaPerro = Pekines;
+						}else{ 
+							if (raza == "Otro"){
+								razaPerro = Otro;
+							} 
 						} 
 					} 
 				} 
@@ -213,27 +234,32 @@ DtMascota crearDtMascota (std::string tipoMascota){
             	 
         boolean vacunabool = false; 
         if (vacuna == "Si"){vacunabool = true;} 
-        mascota = new DtPerro(nombreMascota, genero, pesoMascota, vacunabool); 
-	} 
-	else{ 
-		std::string tipoPelo, vacuna; 
-        cout << "Ingrese en orden el nombre, genero, y su tipo de pelo" 
-        cin >> nombreMascota >> generoMascota >> tipoPelo; 
-             
-        Genero genero; 
-        if (generoMascota == "Macho"){genero = Macho;} 
-        else{genero = Hembra;} 
-            	 
-        TipoPelo pelo; 
-        if(tipoPelo == "Corto"){tipoPelo = Corto;} 
-		else{ 
-			if(tipoPelo == "Mediano"){tipoPelo = Mediano;} 
-			else{ 
-				if(tipoPelo == "Largo"){tipoPelo = Largo;} 
+        	mascota = new DtPerro(nombreMascota, genero, pesoMascota, vacunabool); 
+		}else{ 
+			std::string tipoPelo, vacuna; 
+			cout << "Ingrese en orden el nombre, genero, y su tipo de pelo" 
+			cin >> nombreMascota >> generoMascota >> tipoPelo; 
+				
+			Genero genero; 
+        	if (generoMascota == "Macho"){
+				genero = Macho;
+			}else{
+				genero = Hembra;
 			} 
+            TipoPelo pelo; 
+       		if(tipoPelo == "Corto"){
+				tipoPelo = Corto;
+			}else{ 
+				if(tipoPelo == "Mediano"){
+					tipoPelo = Mediano;
+				}else{ 
+					if(tipoPelo == "Largo"){
+						tipoPelo = Largo;
+					} 
+				} 
+			} 
+			mascota = new DtGato(nombreMascota, genero, pesoMascota, pelo); 
 		} 
-		 
-		mascota = new DtGato(nombreMascota, genero, pesoMascota, pelo); 
+		return mascota; 
 	} 
-	return mascota; 
 } 
