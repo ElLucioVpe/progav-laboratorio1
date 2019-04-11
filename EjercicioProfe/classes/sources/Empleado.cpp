@@ -113,4 +113,3 @@ DtEmpresa** Empleado::obtenerEmpresasActivas(int& cantidadEmpresasActivas) {
 Empleado::~Empleado() {
     delete [] relacionesLaborales;
 }
-
