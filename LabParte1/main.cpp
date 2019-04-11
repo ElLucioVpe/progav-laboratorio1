@@ -187,8 +187,8 @@ void ingresarConsulta(std::string motivo, std::string ci){
 	std::time_t t = std::time(0);      // Obtener tiempo actual
 	std::tm* now = std::localtime(&t); //
 	
-	DtConsulta consulta = new DtConsulta(DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900), motivo);
-	socio->agregarConsulta(consulta);
+	DtConsulta * consulta = new DtConsulta(motivo, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900));
+	socio->agregarConsulta(*consulta);
 }
 
 DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio, int& cantConsultas){

@@ -1,6 +1,6 @@
 #include "../headers/DtConsulta.h"
 
-DtConsulta::DtConsulta(std::string motivo, DtFecha & fechaConsulta) : fecha(fecha){
+DtConsulta::DtConsulta(std::string motivo, DtFecha fechaConsulta) : fecha(fechaConsulta){
     this->motivo = motivo;
 }
 
