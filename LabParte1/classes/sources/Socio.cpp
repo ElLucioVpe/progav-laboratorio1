@@ -1,8 +1,6 @@
 #include "../headers/Socio.h"
 
 #include <stdexcept>
-const int MAX_MASCOTAS = 10;
-const int MAX_CONSULTAS = 20;
 
 Socio::Socio(std::string ci, std::string nombre, const DtFecha & _fechaIngreso) : FechaIngreso(_fechaIngreso) {
 	this->Ci = ci;
