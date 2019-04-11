@@ -9,7 +9,7 @@ class DtMascota {
   public:
     DtMascota(std::string _nombre, const Genero & _genero, float _peso);
     std::string getNombre () const;
-    Genero getGenero() const;
+    Genero& getGenero();
     float getPeso() const;
     float getRacionDiaria() const;
   private:

@@ -9,7 +9,7 @@ std::string DtMascota::getNombre() const {
   return this->nombre;
 }
 
-Genero DtMascota::getGenero() const {
+Genero& DtMascota::getGenero() {
   return this->genero;
 }
 

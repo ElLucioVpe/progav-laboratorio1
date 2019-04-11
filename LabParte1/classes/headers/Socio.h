@@ -23,7 +23,7 @@ class Socio {
 		void setMascota(Mascota** mascotas, int CantidadMascotas);
 		void setConsulta(Consulta** consultas, int CantidadConsultas);
 
-		void agregarMascota(Mascota);
+		void agregarMascota(DtMascota m1);
 		void agregarConsulta(Consulta);
 	
 		virtual ~Socio();
