@@ -24,6 +24,7 @@ class Socio {
 		void setConsulta(Consulta** consultas, int CantidadConsultas);
 
 		void agregarMascota(Mascota);
+		void agregarConsulta(Consulta);
 	
 		virtual ~Socio();
 		
