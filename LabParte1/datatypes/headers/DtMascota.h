@@ -1,7 +1,7 @@
 #ifndef DTMASCOTA_H
 #define DTMASCOTA_H
 
-//#include <string>
+#include <string>
 #include "Genero.h"
 
 

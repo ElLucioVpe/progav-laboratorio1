@@ -29,10 +29,10 @@ int cantidadSocios = 0;
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota);
 void agregarMascota(std::string ci, const DtMascota& dtMascota);
 void ingresarConsulta(std::string motivo, std::string ci);
-DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas);
+DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio, int& cantConsultas);
 void eliminarSocio(std::string ci);
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas);
-DtMascota crearDtMascota (std:string tipoMascota);
+DtMascota crearDtMascota (std::string tipoMascota);
 DtMascota* obtenerMascotaPorNombre(string basicString, int mascotas);
 
 int main(int argc, char** argv) {
@@ -56,50 +56,65 @@ int main(int argc, char** argv) {
 				case 0:
 					return 0;
 				case 1:
-					std::string cedulaPersona, nombrePersona, tipoMascota;
-					cout << "Ingrese en orden ci, nombre y que mascota tiene: ";
-					cin >> cedulaPersona >> nombrePersona >> tipoMascota; 
-					DtMascota mascota = crearDtMascota(tipoMascota); 
-					registrarSocio(cedulaPersona, nombrePersona, mascota); 
-					break;
+                {
+                    std::string cedulaPersona, nombrePersona, tipoMascota;
+                    cout << "Ingrese en orden ci, nombre y que mascota tiene: ";
+                    cin >> cedulaPersona >> nombrePersona >> tipoMascota;
+                    DtMascota mascota = crearDtMascota(tipoMascota);
+                    registrarSocio(cedulaPersona, nombrePersona, mascota);
+                    break;
+                }
 				case 2:
-					std::string ci;
-					cout << "Ingrese la cedula del socio a eliminar: ";
-					cin >> ci;
-					eliminarSocio(ci);
-					break;
+                {
+                    std::string ci;
+                    cout << "Ingrese la cedula del socio a eliminar: ";
+                    cin >> ci;
+                    eliminarSocio(ci);
+                    break;
+                }
 				case 3:
-					std::string ci, tipoMascota;
-					cout << "Ingrese la cedula del socio al cual quiere agregar una mascota, seguido del tipo de mascota: ";
-					cin >> ci >> tipoMascota;
-					DtMascota mascota = crearDtMascota(tipoMascota);
-					agregarMascota(ci, mascota);
-					break;
+                {
+                    std::string ci, tipoMascota;
+                    cout << "Ingrese la cedula del socio al cual quiere agregar una mascota, seguido del tipo de mascota: ";
+                    cin >> ci >> tipoMascota;
+                    DtMascota mascota = crearDtMascota(tipoMascota);
+                    agregarMascota(ci, mascota);
+                    break;
+                }
 				case 4:
-					std::string ci;
-					int cantMascotas;
-					out << "Ingrese la cedula del socio y la cantidad de mascotas: ";
-					cin >> ci >> cantMascotas;
-					DtMascota** mascotas = obtenerMascotas(ci, cantMascotas);
-					//Mostrar el contenido del arreglo, probablemente solo nombre y tipo
-					break;
+                {
+                    std::string ci;
+                    int cantMascotas;
+                    cout << "Ingrese la cedula del socio y la cantidad de mascotas: ";
+                    cin >> ci >> cantMascotas;
+                    DtMascota** mascotas = obtenerMascotas(ci, cantMascotas);
+                    //Mostrar el contenido del arreglo, probablemente solo nombre y tipo
+                    break;
+                }
 				case 5:
-					std::string ci, motivo;
-					cout << "Ingrese su cedula: ";
-					cin >> ci;
-					cout << "\nIngrese su consulta: ";
-					cin >> motivo;
-					ingresarConsulta(motivo, ci);
-					break;
+                {
+                    std::string ci, motivo;
+                    cout << "Ingrese su cedula: ";
+                    cin >> ci;
+                    cout << "\nIngrese su consulta: ";
+                    cin >> motivo;
+                    ingresarConsulta(motivo, ci);
+                    break;
+                }
 				case 6:
-					int dia, mes, anio, cantConsultas;
-					cout << "Ingrese la cantidad de consultas que desea ver: ";
-					cin >> cantConsultas;
-					cout << "\nIngrese una fecha (dia mes anio), se mostraran todas las consultas anteriores a esta: ";
-					cin >> dia >> mes >> anio;
-					DtConsulta** consultas = verConsultasAntesDeFecha(new DtFecha(dia, mes, anio), ci, cantConsultas);
-					//Mostrar el contenido del arreglo
-					break;
+                {
+                    int dia, mes, anio, cantConsultas;
+                    std::string ci;
+                    cout << "Ingrese la ci del socio: ";
+                    cin >> ci;
+                    cout << "Ingrese la cantidad de consultas que desea ver: ";
+                    cin >> cantConsultas;
+                    cout << "\nIngrese una fecha (dia mes anio), se mostraran todas las consultas anteriores a esta: ";
+                    cin >> dia >> mes >> anio;
+                    DtConsulta** consultas = verConsultasAntesDeFecha(new DtFecha(dia, mes, anio), ci, cantConsultas);
+                    //Mostrar el contenido del arreglo
+                    break;
+                }
 				default:
 					throw std::invalid_argument("La opcion ingresada no es correcta");     
 			}

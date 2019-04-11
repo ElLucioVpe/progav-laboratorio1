@@ -2,6 +2,7 @@
 #define DTPERRO_H
 
 //#include <string>
+#include <string>
 #include "DtMascota.h"
 #include "TipoPelo.h"
 #include "DtFecha.h"
