@@ -32,7 +32,7 @@ void ingresarConsulta(std::string motivo, std::string ci);
 DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas);
 void eliminarSocio(std::string ci);
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas);
-DtMascota crearDtMascota (std:string tipoMascota);
+DtMascota crearDtMascota (std::string tipoMascota);
 DtMascota* obtenerMascotaPorNombre(string basicString, int mascotas);
 
 int main(int argc, char** argv) {
