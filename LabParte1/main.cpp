@@ -113,9 +113,13 @@ int main(int argc, char** argv) {
                     cin >> dia >> mes >> anio;
                     DtConsulta** consultas = verConsultasAntesDeFecha(new DtFecha(dia, mes, anio), ci, cantConsultas);
                     //Mostrar el contenido del arreglo
-					for (int i=0, i < consultas.length(), i++) {
-						// cout << (i +1) << " - " << consultas[i]->motivo; //???
+
+                    /*
+					for (int i=0; i < consultas.length(); i++) {
+                        cout << (i +1) << " - " << consultas[i]->motivo; //???
 					}
+                     */
+
                     break;
                 }
 				default:
@@ -198,13 +202,16 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio,
 	Consulta** consultasSocio = socio->getConsulta();
 	
 	int j = 0;
-	for (int i=0, i < cantConsultas, i++) {
+
+	/*
+	for (int i=0; i < cantConsultas; i++) {
 		if ((consultasSocio[i]->getFechaConsulta()) < Fecha) {
 			retornoConsultas[j] = consultas[i];
 			j++;
 		}
 	}
-	
+	 */
+
 	if (retornoConsultas == NULL) {
 		throw std::invalid_argument("No existen consultas antes de esa fecha"); 
 	}
@@ -272,10 +279,11 @@ DtMascota crearDtMascota (std::string tipoMascota){
 			} 
 		} 
             	 
-        boolean vacunabool = false; 
-        if (vacuna == "Si"){vacunabool = true;} 
-        	mascota = new DtPerro(nombreMascota, genero, pesoMascota, vacunabool); 
-		}else{ 
+        bool vacunabool = false;
+
+        if (vacuna == "Si") {
+            vacunabool = true;
+        } else {
 			std::string tipoPelo, vacuna; 
 			cout << "Ingrese en orden el nombre, genero, y su tipo de pelo" 
 			cin >> nombreMascota >> generoMascota >> tipoPelo; 
