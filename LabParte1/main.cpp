@@ -239,12 +239,11 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 
 //Auxiliares 
 DtMascota crearDtMascota (std::string tipoMascota){
-	std::string nombreMascota, generoMascota, tipoMascota;
+	std::string nombreMascota, generoMascota;
 	float pesoMascota;
-	DtMascota mascota; 
-    if(tipoMascota == "Perro"){ 
+    if(tipoMascota == "Perro"){
         std::string raza, vacuna; 
-        cout << "Ingrese en orden el nombre, genero, raza y si esta vacunada la mascota (Si/No)" 
+        cout << "Ingrese en orden el nombre, genero, raza y si esta vacunada la mascota (Si/No)";
         cin >> nombreMascota >> generoMascota >> raza >> vacuna; 
             	 
 		Genero genero; 
