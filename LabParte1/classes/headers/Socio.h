@@ -31,10 +31,12 @@ class Socio {
 		std::string Ci;
 		std::string Nombre;
 		DtFecha FechaIngreso;
-		int CantidadMascotas = 0;
+		int CantidadMascotas;
 		Consulta** Consultas;
 		Mascota** Mascotas;
-		int CantidadConsultas = 0;
+		int CantidadConsultas;
+		static const int MAX_MASCOTAS = 10;
+		static const int MAX_CONSULTAS = 20;
 };
 
 #endif /* SOCIO_H */
