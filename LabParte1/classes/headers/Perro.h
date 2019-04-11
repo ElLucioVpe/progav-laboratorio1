@@ -1,9 +1,8 @@
 #ifndef PERRO_H
 #define PERRO_H
 
-#include "../../datatypes/headers/RazaPerro.h"
-#include "../../datatypes/headers/Genero.h"
 #include "Mascota.h"
+#include "../../datatypes/headers/RazaPerro.h"
 
 class Perro : public Mascota {
 	public:
