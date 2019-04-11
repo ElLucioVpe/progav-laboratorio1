@@ -1,8 +1,7 @@
 #include "../headers/Consulta.h"
 #include <stdexcept>
 
-Consulta::Consulta(DtFecha &_fechaConsulta, std::string _motivo, DtFecha fechaConsulta) : FechaConsulta(fechaConsulta) {
-	this->FechaConsulta = _fechaConsulta;
+Consulta::Consulta(std::string _motivo, DtFecha fechaConsulta) : FechaConsulta(fechaConsulta) {
 	this->Motivo = _motivo;
 }
 	

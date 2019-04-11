@@ -9,7 +9,7 @@ class Consulta {
 		DtFecha FechaConsulta;
 		std::string Motivo;
 	public:
-		Consulta(DtFecha &_fechaConsulta, std::string _motivo, DtFecha fechaConsulta);
+		Consulta(std::string _motivo, DtFecha fechaConsulta);
 		DtFecha getFechaConsulta() const;
 		std::string getMotivo() const;
 		
