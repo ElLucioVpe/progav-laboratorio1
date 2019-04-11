@@ -1,18 +1,14 @@
 #ifndef A
 #define A
-
+#include "B.h"
+#include "C.h"
 
 class claseB; //  forward declaration
 class claseC; //  forward declaration
 
-#include "B.h"
-#include "C.h"
 class claseA{
 	public:
     claseA();
-    void printA();
-    void setA(int aN);
-	int getA();
 
 	private:
 	 int a;

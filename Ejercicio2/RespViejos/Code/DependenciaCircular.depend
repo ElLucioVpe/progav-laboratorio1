@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1554900361 source:/home/tecnologo/Escritorio/Ejercicio2/Code/A.cpp
+	"A.h"
+	<iostream>
+
+1554900319 /home/tecnologo/Escritorio/Ejercicio2/Code/A.h
+	"B.h"
+	"C.h"
+
+1554900156 /home/tecnologo/Escritorio/Ejercicio2/Code/B.h
+	"A.h"
+	"C.h"
+
+1554899906 /home/tecnologo/Escritorio/Ejercicio2/Code/C.h
+	"A.h"
+	"B.h"
+
+1554900261 source:/home/tecnologo/Escritorio/Ejercicio2/Code/B.cpp
+	"B.h"
+	<iostream>
+
+1554900289 source:/home/tecnologo/Escritorio/Ejercicio2/Code/C.cpp
+	"C.h"
+	<iostream>
+	<iostream>
+
+1554900271 source:/home/tecnologo/Escritorio/Ejercicio2/Code/main.cpp
+	<iostream>
+	"A.h"
+	"B.h"
+	"C.h"
+

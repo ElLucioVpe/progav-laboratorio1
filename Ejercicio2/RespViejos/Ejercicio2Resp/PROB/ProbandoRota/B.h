@@ -1,11 +1,11 @@
 #ifndef B
 #define B
+#include "A.h"
+#include "C.h"
 
 class claseA; //  forward declaration
 class claseC; //  forward declaration
 
-#include "A.h"
-#include "C.h"
 
 class claseB{
 	private:
@@ -16,9 +16,6 @@ class claseB{
 
 	public:
     claseB();
-    void printB();
-    void setB(int bN);
-	int getB();
 
 };
 #endif
