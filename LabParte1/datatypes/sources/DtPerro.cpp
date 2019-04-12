@@ -13,3 +13,6 @@ RazaPerro DtPerro::getRaza() const {
 bool DtPerro::getVacunaCachorro() const {
 	return this->VacunaCachorro;
 }
+
+DtPerro::~DtPerro() {
+}

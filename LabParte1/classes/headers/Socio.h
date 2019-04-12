@@ -6,7 +6,11 @@
 #include "../../datatypes/headers/DtFecha.h"
 #include "../../datatypes/headers/DtConsulta.h"
 #include "../../datatypes/headers/DtMascota.h"
+#include "../../datatypes/headers/DtPerro.h"
+#include "../../datatypes/headers/DtGato.h"
 #include "Mascota.h"
+#include "Perro.h"
+#include "Gato.h"
 #include "Consulta.h"
 
 class Socio {
@@ -23,7 +27,7 @@ class Socio {
 		void setMascota(Mascota** mascotas, int CantidadMascotas);
 		void setConsulta(Consulta** consultas, int CantidadConsultas);
 
-		void agregarMascota(DtMascota m1);
+		void agregarMascota(const DtMascota* m1);
 		void agregarConsulta(DtConsulta c1);
 	
 		virtual ~Socio();
@@ -32,10 +36,10 @@ class Socio {
 		std::string Ci;
 		std::string Nombre;
 		DtFecha FechaIngreso;
-		int CantidadMascotas = 0;
+		int CantidadMascotas;
 		Consulta** Consultas;
 		Mascota** Mascotas;
-		int CantidadConsultas = 0;
+		int CantidadConsultas;
 		static const int MAX_MASCOTAS = 10;
 		static const int MAX_CONSULTAS = 20;
 };

@@ -1,7 +1,6 @@
-#ifndef DTPERRO_H
-#define DTPERRO_H
+#ifndef DTGATO_H
+#define DTGATO_H
 
-//#include <string>
 #include <string>
 #include "DtMascota.h"
 #include "TipoPelo.h"
@@ -11,7 +10,8 @@ class DtGato : public DtMascota {
     public:
         DtGato (TipoPelo Tipo, std::string NombreMascota, Genero& Genero, float Peso);
         TipoPelo getPelo() const;
-
+		
+		virtual ~DtGato();
     private:
         TipoPelo Tipo;
 };

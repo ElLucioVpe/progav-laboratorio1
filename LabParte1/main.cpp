@@ -35,7 +35,7 @@ void ingresarConsulta(std::string motivo, std::string ci);
 DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio, int& cantConsultas);
 void eliminarSocio(std::string ci);
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas);
-DtMascota crearDtMascota (std::string tipoMascota);
+DtMascota* crearDtMascota (std::string tipoMascota);
 DtMascota* obtenerMascotaPorNombre(string basicString, int mascotas);
 
 int main(int argc, char** argv) {
@@ -52,7 +52,8 @@ int main(int argc, char** argv) {
 		cout << "5 Ingresar Consulta.\n" << endl;           //Pregunta de Usuario a un socio existente.
 		cout << "6 Ver Consutas antes de una fecha.\n" << endl; 
 		cout << "Pulse 0 para salir.\n" << endl;
-
+		
+		cin >> opcionUsuario;
 		try {
 
 			switch(opcionUsuario){
@@ -63,8 +64,8 @@ int main(int argc, char** argv) {
                     std::string cedulaPersona, nombrePersona, tipoMascota;
                     cout << "Ingrese en orden ci, nombre y que mascota tiene: ";
                     cin >> cedulaPersona >> nombrePersona >> tipoMascota;
-                    DtMascota mascota = crearDtMascota(tipoMascota);
-                    registrarSocio(cedulaPersona, nombrePersona, mascota);
+                    const DtMascota* mascota = crearDtMascota(tipoMascota);
+                    registrarSocio(cedulaPersona, nombrePersona, *mascota);
                     break;
                 }
 				case 2:
@@ -80,8 +81,8 @@ int main(int argc, char** argv) {
                     std::string ci, tipoMascota;
                     cout << "Ingrese la cedula del socio al cual quiere agregar una mascota, seguido del tipo de mascota: ";
                     cin >> ci >> tipoMascota;
-                    DtMascota mascota = crearDtMascota(tipoMascota);
-                    agregarMascota(ci, mascota);
+                    DtMascota* mascota = crearDtMascota(tipoMascota);
+                    agregarMascota(ci, *mascota);
                     break;
                 }
 				case 4:
@@ -162,12 +163,9 @@ void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMasco
     	std::tm* now = std::localtime(&t); //
 
 	    socios[cantidadSocios] = new Socio(ci, nombre, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900)); //Agregar dia, mes y anio actuales a DtFecha
-	    socios[cantidadSocios]->agregarMascota(dtMascota);
+	    socios[cantidadSocios]->agregarMascota(&dtMascota);
 	    cantidadSocios++;
 	}
-        /*DtMascota* mascota = agregarMascota(dtMascota.getNombre(), socio->getCantidadMascotas());
-        socios[++cantidadSocios] = new Socio(ci, nombre, FechaIngreso, mascota);
-	    socio->agregarMascota(mascota);*/
 }
 
 
@@ -177,7 +175,7 @@ void agregarMascota(std::string ci, const DtMascota& dtMascota){
 	if (socio == NULL) { 
 		throw std::invalid_argument("No existe un socio con la ci ingresada"); 
 	}
-	socio->agregarMascota(dtMascota);
+	socio->agregarMascota(&dtMascota);
 }
 
 void ingresarConsulta(std::string motivo, std::string ci){
@@ -241,13 +239,15 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 }
 
 //Auxiliares 
-DtMascota crearDtMascota (std::string tipoMascota){
+DtMascota* crearDtMascota (std::string tipoMascota){
 	std::string nombreMascota, generoMascota;
 	float pesoMascota;
+	
+	DtMascota* mascota;
     if(tipoMascota == "Perro"){
         std::string raza, vacuna; 
-        cout << "Ingrese en orden el nombre, genero, raza y si esta vacunada la mascota (Si/No)" ;
-        cin >> nombreMascota >> generoMascota >> raza >> vacuna; 
+        cout << "Ingrese en orden el nombre, genero, peso, raza y si esta vacunada la mascota (Si/No)" ;
+        cin >> nombreMascota >> generoMascota >> pesoMascota >> raza >> vacuna; 
             	 
 		Genero genero; 
         if (generoMascota == "Macho"){
@@ -286,11 +286,11 @@ DtMascota crearDtMascota (std::string tipoMascota){
             vacunabool = true;
         }
         
-        //DtMascota* mascota = new DtPerro(raza, vacunabool, nombreMascota, genero, pesoMascota);
+        mascota = new DtPerro(razaPerro, vacunabool, nombreMascota, genero, pesoMascota);
     } else {
 		std::string tipoPelo, vacuna; 
-		cout << "Ingrese en orden el nombre, genero, y su tipo de pelo";
-		cin >> nombreMascota >> generoMascota >> tipoPelo; 
+		cout << "Ingrese en orden el nombre, genero, peso, y su tipo de pelo";
+		cin >> nombreMascota >> generoMascota >> pesoMascota >> tipoPelo; 
 			
 		Genero genero; 
         if (generoMascota == "Macho"){
@@ -313,8 +313,8 @@ DtMascota crearDtMascota (std::string tipoMascota){
 			} 
 		}
 		
-		//DtMascota* mascota = new DtGato(pelo, nombreMascota, genero, peso); 
+		mascota = new DtGato(pelo, nombreMascota, genero, pesoMascota);
 	}    
 
-    //return mascota;
+    return mascota;
 }  

@@ -6,11 +6,11 @@
 
 class Gato : public Mascota {
   public:
-    Gato(TipoPelo _tp, std::string _nombre, Genero _genero, float _peso);
+    Gato(TipoPelo _tp, std::string _nombre, const Genero _genero, float _peso);
     TipoPelo getTipoPelo();
   private:
     TipoPelo Pelo;
 };
 
 
-#endif
+#endif /* GATO_H */

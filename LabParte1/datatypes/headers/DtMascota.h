@@ -7,11 +7,13 @@
 
 class DtMascota {
   public:
-    DtMascota(std::string _nombre, const Genero & _genero, float _peso);
+    DtMascota(std::string _nombre, const Genero& _genero, float _peso);
     std::string getNombre () const;
-    Genero& getGenero();
+    Genero getGenero() const;
     float getPeso() const;
     float getRacionDiaria() const;
+    
+    virtual ~DtMascota();
   private:
     std::string nombre;
     Genero genero;
@@ -19,4 +21,4 @@ class DtMascota {
     float racionDiaria;
 };
 
-#endif
+#endif /* DTMASCOTA_H */

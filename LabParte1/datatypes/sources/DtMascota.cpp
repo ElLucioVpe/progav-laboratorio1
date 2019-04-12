@@ -9,7 +9,7 @@ std::string DtMascota::getNombre() const {
   return this->nombre;
 }
 
-Genero& DtMascota::getGenero() {
+Genero DtMascota::getGenero() const {
   return this->genero;
 }
 
@@ -19,4 +19,7 @@ float DtMascota::getPeso() const {
 
 float DtMascota::getRacionDiaria() const {
   return this->racionDiaria;
+}
+
+DtMascota::~DtMascota() {
 }

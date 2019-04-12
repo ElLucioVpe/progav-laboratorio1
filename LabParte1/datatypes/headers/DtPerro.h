@@ -11,6 +11,8 @@ class DtPerro : public DtMascota {
     DtPerro (RazaPerro raza, bool vacunaCachorro, std::string NombreMascota, Genero& Genero, float Peso);
     RazaPerro getRaza() const;
     bool getVacunaCachorro() const;
+    
+    virtual ~DtPerro();
   private:
     RazaPerro Raza;
     bool VacunaCachorro;
