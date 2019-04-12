@@ -282,39 +282,39 @@ DtMascota crearDtMascota (std::string tipoMascota){
 		} 
             	 
         bool vacunabool = false;
-
         if (vacuna == "Si") {
             vacunabool = true;
-        } else {
-			std::string tipoPelo, vacuna; 
-			cout << "Ingrese en orden el nombre, genero, y su tipo de pelo";
-			cin >> nombreMascota >> generoMascota >> tipoPelo; 
-				
-			Genero genero; 
-        	if (generoMascota == "Macho"){
-				genero = Genero::Macho;
-			}else{
-				genero = Genero::Hembra;
-			} 
+        }
+        
+        //DtMascota* mascota = new DtPerro(raza, vacunabool, nombreMascota, genero, pesoMascota);
+    } else {
+		std::string tipoPelo, vacuna; 
+		cout << "Ingrese en orden el nombre, genero, y su tipo de pelo";
+		cin >> nombreMascota >> generoMascota >> tipoPelo; 
+			
+		Genero genero; 
+        if (generoMascota == "Macho"){
+			genero = Genero::Macho;
+		}else{
+			genero = Genero::Hembra;
+		} 
         	
-            TipoPelo pelo; 
+        TipoPelo pelo; 
         	
-       		if(tipoPelo == "Corto"){
-                pelo = TipoPelo::Corto;
+       	if(tipoPelo == "Corto"){
+            pelo = TipoPelo::Corto;
+		}else{ 
+			if(tipoPelo == "Mediano"){
+                pelo = TipoPelo::Mediano;
 			}else{ 
-				if(tipoPelo == "Mediano"){
-                    pelo = TipoPelo::Mediano;
-				}else{ 
-					if(tipoPelo == "Largo"){
-                        pelo = TipoPelo::Largo;
-					} 
+				if(tipoPelo == "Largo"){
+                    pelo = TipoPelo::Largo;
 				} 
-			}
-
+			} 
 		}
+		
+		//DtMascota* mascota = new DtGato(pelo, nombreMascota, genero, peso); 
+	}    
 
-        //DtPerro * mascota = new DtPerro(raza, vacunabool, nombreMascota, genero, pesoMascota);
-
-        //return mascota;
-	} 
-} 
+    //return mascota;
+}  
