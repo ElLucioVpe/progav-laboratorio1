@@ -1,6 +1,6 @@
 #include "../headers/DtGato.h"
 
-DtGato::DtGato(TipoPelo _tipo,std::string NombreMascota, Genero& Genero, float Peso) : DtMascota(NombreMascota, Genero, Peso) {
+DtGato::DtGato(TipoPelo _tipo,std::string NombreMascota, const Genero& Genero, float Peso) : DtMascota(NombreMascota, Genero, Peso) {
 	this->Tipo = _tipo;
 }
 

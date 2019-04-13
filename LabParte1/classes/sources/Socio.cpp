@@ -27,15 +27,7 @@ void Socio::agregarMascota(const DtMascota* m1) {
     if (this->CantidadMascotas == MAX_MASCOTAS) {
         throw std::invalid_argument("El socio no puede tener mas mascotas.");
     } else {
-        /*this->Mascotas[this->CantidadMascotas] = new Mascota(
-                m1.getNombre(),
-                m1.getGenero(),
-                m1.getPeso()
-                );
-		*/
-		
 		auto p = dynamic_cast<const DtPerro*>(m1);
-    	//auto p = const_cast<DtPerro*>(m1);
 	    if (p) {
 	        this->Mascotas[this->CantidadMascotas] = new Perro(
 	        	p->getRaza(),
@@ -46,11 +38,11 @@ void Socio::agregarMascota(const DtMascota* m1) {
 	        );
 	    }
 	    else {
-	        DtGato* g = (DtGato*) (const_cast<DtMascota*>(m1));
+	        DtGato* g = (DtGato*) m1;
 	        this->Mascotas[this->CantidadMascotas] = new Gato(
 	        	g->getPelo(),
 	            g->getNombre(),
-	            p->getGenero(),
+	            g->getGenero(),
 	            g->getPeso()
 	        );
 	    }

@@ -8,7 +8,7 @@
 
 class DtPerro : public DtMascota {
   public:
-    DtPerro (RazaPerro raza, bool vacunaCachorro, std::string NombreMascota, Genero& Genero, float Peso);
+    DtPerro (RazaPerro raza, bool vacunaCachorro, std::string NombreMascota, const Genero& Genero, float Peso);
     RazaPerro getRaza() const;
     bool getVacunaCachorro() const;
     

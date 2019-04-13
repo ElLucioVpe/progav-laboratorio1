@@ -8,7 +8,7 @@
 
 class DtGato : public DtMascota {
     public:
-        DtGato (TipoPelo Tipo, std::string NombreMascota, Genero& Genero, float Peso);
+        DtGato (TipoPelo Tipo, std::string NombreMascota, const Genero& Genero, float Peso);
         TipoPelo getPelo() const;
 		
 		virtual ~DtGato();

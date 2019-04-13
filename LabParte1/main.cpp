@@ -40,9 +40,8 @@ DtMascota* crearDtMascota (std::string tipoMascota);
 
 int main(int argc, char** argv) {
 	int opcionUsuario;
+	cout << "Bienvenido al sistema" << endl;
 	while(true){
-		cout << "Bienvenido al sistema" << endl;
-		cout << "\t\tLos comandos se mostraran tras elegir una opcion.\n\n" << endl;
 		//Opciones para el Usuario.
 		cout << "\tElegir una Opcion:\n" << endl;
 		cout << "1 Registrar Socio.\n" << endl;
