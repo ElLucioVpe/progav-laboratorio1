@@ -57,7 +57,10 @@ int main(int argc, char** argv) {
 
 			switch(opcionUsuario){
 				case 0:
+				{
+					cout << "Gracias por usar nuestro programa";
 					return 0;
+				}
 				case 1:
                 {
                     std::string cedulaPersona, nombrePersona, tipoMascota;
@@ -92,6 +95,9 @@ int main(int argc, char** argv) {
                     cin >> ci >> cantMascotas;
                     DtMascota** mascotas = obtenerMascotas(ci, cantMascotas);
                     //Mostrar el contenido del arreglo, probablemente solo nombre y tipo
+                    for (int i=0; i < (sizeof(mascotas)/sizeof(*mascotas)); i++) { 
+                    	cout << i+1 << endl << mascotas[i];
+					}
                     break;
                 }
 				case 5:
@@ -119,9 +125,8 @@ int main(int argc, char** argv) {
                     DtConsulta** consultas = verConsultasAntesDeFecha(fecha, ci, cantConsultas);
                     //Mostrar el contenido del arreglo
 					for (int i=0; i < (sizeof(consultas)/sizeof(*consultas)); i++) {
-                        cout << (i +1) << " - " << consultas[i]->getMotivo(); 
+                        cout << i+1 << " - " << consultas[i]->getMotivo(); 
 					}
-
                     break;
                 }
 				default:
@@ -129,10 +134,12 @@ int main(int argc, char** argv) {
 			}
 		}
 		catch(std::invalid_argument &e){
-			cout << "Error: " << e.what() << endl;
+			cout << "\nError: " << e.what() << endl;
 		}
-		cout << "Presione ENTER para continuar...";
+		cin.ignore();
+		cout << "\nPresione ENTER para continuar...";
 		cin.get();
+		cout << endl;
 	}
 	return 0;
 }
@@ -144,10 +151,6 @@ Socio* obtenerSocio(std::string ci) {
         }
     }
     return NULL;
-}
-
-DtMascota* obtenerMascotaPorNombre(string nombre, int cantMascotas) {
-    return nullptr;
 }
 
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota){
@@ -167,7 +170,6 @@ void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMasco
 	    cantidadSocios++;
 	}
 }
-
 
 void agregarMascota(std::string ci, const DtMascota& dtMascota){
 	Socio* socio = obtenerSocio(ci);
@@ -234,9 +236,35 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
  
 	if (socio == NULL) { throw std::invalid_argument("No existe un socio con la ci ingresada"); }
 	
-	DtMascota** ejemplo = NULL;
-
-	return ejemplo;
+	DtMascota** retornoMascota = new DtMascota*[cantMascotas];
+	Mascota** mascotasSocio = socio->getMascota();
+	
+	if ((sizeof(mascotasSocio)/sizeof(*mascotasSocio)) < cantMascotas){ cantMascotas = (sizeof(mascotasSocio)/sizeof(*mascotasSocio)); }
+	int j = 0;
+	for (int i=0; i < cantMascotas; i++) {
+		auto p = dynamic_cast<const DtPerro*>(mascotasSocio[i]);
+	    if (p) {
+	        retornoMascota[j] = new DtPerro(
+	        	p->getRaza(),
+	        	p->getVacunaCachorro(),
+	            p->getNombre(),
+	            p->getGenero(),
+	            p->getPeso()
+	        );
+	    }
+	    else {
+	        DtGato* g = (DtGato*) mascotasSocio[i];
+	        retornoMascota[j] = new DtGato(
+	        	g->getPelo(),
+	            g->getNombre(),
+	            g->getGenero(),
+	            g->getPeso()
+	        );
+	    }
+		j++;
+	}
+	
+	return retornoMascota;
 }
 
 //Auxiliares 
