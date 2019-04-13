@@ -97,6 +97,7 @@ int main(int argc, char** argv) {
                     //Mostrar el contenido del arreglo, probablemente solo nombre y tipo
                     for (int i=0; i < (sizeof(mascotas)/sizeof(*mascotas)); i++) { 
                     	cout << i+1 << endl << mascotas[i];
+                    	cout<<endl;
 					}
                     break;
                 }

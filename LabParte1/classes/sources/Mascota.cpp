@@ -5,6 +5,7 @@ Mascota::Mascota(std::string _nombre, const Genero& _genero, float _peso) : gene
 	this->Peso = _peso;
 }
 
+
 //Overload de <<
 std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
     o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
@@ -19,3 +20,4 @@ std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
     o << std::string("Peso: ") <<  std::to_string (dtM->getPeso());
     return o;
 }
+

@@ -32,3 +32,4 @@ std::ostream& operator<<(std::ostream &o, DtGato* dtG) {
 	
     return o;
 }
+
