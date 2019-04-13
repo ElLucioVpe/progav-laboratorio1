@@ -32,11 +32,10 @@ int cantidadSocios = 0;
 void registrarSocio(std::string ci, std::string nombre, const DtMascota& dtMascota);
 void agregarMascota(std::string ci, const DtMascota& dtMascota);
 void ingresarConsulta(std::string motivo, std::string ci);
-DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio, int& cantConsultas);
+DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas);
 void eliminarSocio(std::string ci);
 DtMascota** obtenerMascotas(std::string ci, int& cantMascotas);
 DtMascota* crearDtMascota (std::string tipoMascota);
-DtMascota* obtenerMascotaPorNombre(string basicString, int mascotas);
 
 int main(int argc, char** argv) {
 	int opcionUsuario;
@@ -115,23 +114,21 @@ int main(int argc, char** argv) {
                     cin >> cantConsultas;
                     cout << "\nIngrese una fecha (dia mes anio), se mostraran todas las consultas anteriores a esta: ";
                     cin >> dia >> mes >> anio;
-                    DtConsulta** consultas = verConsultasAntesDeFecha(new DtFecha(dia, mes, anio), ci, cantConsultas);
+                    DtFecha fecha(dia, mes, anio);
+                    DtConsulta** consultas = verConsultasAntesDeFecha(fecha, ci, cantConsultas);
                     //Mostrar el contenido del arreglo
-
-                    /*
-					for (int i=0; i < consultas.length(); i++) {
-                        cout << (i +1) << " - " << consultas[i]->motivo; //???
+					for (int i=0; i < (sizeof(consultas)/sizeof(*consultas)); i++) {
+                        cout << (i +1) << " - " << consultas[i]->getMotivo(); 
 					}
-                     */
 
                     break;
                 }
 				default:
-					throw std::invalid_argument("La opcion ingresada no es correcta");     
+					throw std::invalid_argument("La opcion ingresada no es correcta");
 			}
 		}
-		catch(std::invalid_argument &arroz){
-			cout << "Error " << arroz.what() << endl;
+		catch(std::invalid_argument &e){
+			cout << "Error: " << e.what() << endl;
 		}
 	}
 	return 0;
@@ -192,7 +189,7 @@ void ingresarConsulta(std::string motivo, std::string ci){
 	socio->agregarConsulta(*consulta);
 }
 
-DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio, int& cantConsultas){
+DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas){
 	Socio* socio = obtenerSocio(ciSocio);
 	
 	if (socio == NULL) { 
@@ -202,16 +199,17 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha* Fecha, std::string ciSocio,
 	DtConsulta** retornoConsultas = new DtConsulta*[cantConsultas];
 	Consulta** consultasSocio = socio->getConsulta();
 	
+	if ((sizeof(consultasSocio)/sizeof(*consultasSocio)) < cantConsultas){ cantConsultas = (sizeof(consultasSocio)/sizeof(*consultasSocio)); }
 	int j = 0;
-
-	/*
 	for (int i=0; i < cantConsultas; i++) {
 		if ((consultasSocio[i]->getFechaConsulta()) < Fecha) {
-			retornoConsultas[j] = consultas[i];
+			retornoConsultas[j] = new DtConsulta(
+				consultasSocio[i]->getMotivo(),
+				consultasSocio[i]->getFechaConsulta()
+			);
 			j++;
 		}
 	}
-	 */
 
 	if (retornoConsultas == NULL) {
 		throw std::invalid_argument("No existen consultas antes de esa fecha"); 
@@ -246,7 +244,7 @@ DtMascota* crearDtMascota (std::string tipoMascota){
 	DtMascota* mascota;
     if(tipoMascota == "Perro"){
         std::string raza, vacuna; 
-        cout << "Ingrese en orden el nombre, genero, peso, raza y si esta vacunada la mascota (Si/No)" ;
+        cout << "Ingrese en orden el nombre, genero, peso, raza y si esta vacunada la mascota (Si/No): ";
         cin >> nombreMascota >> generoMascota >> pesoMascota >> raza >> vacuna; 
             	 
 		Genero genero; 
@@ -289,7 +287,7 @@ DtMascota* crearDtMascota (std::string tipoMascota){
         mascota = new DtPerro(razaPerro, vacunabool, nombreMascota, genero, pesoMascota);
     } else {
 		std::string tipoPelo, vacuna; 
-		cout << "Ingrese en orden el nombre, genero, peso, y su tipo de pelo";
+		cout << "Ingrese en orden el nombre, genero, peso, y su tipo de pelo: ";
 		cin >> nombreMascota >> generoMascota >> pesoMascota >> tipoPelo; 
 			
 		Genero genero; 
