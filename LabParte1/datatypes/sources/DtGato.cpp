@@ -33,7 +33,7 @@ std::ostream& operator<<(std::ostream &o, DtGato* dtG) {
 	}else{
          o << std::string("Tipo de Pelo: Largo")<< std::string("\n");
 	}
-     
+
     return o;
 }
 

@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
                     DtMascota** mascotas = obtenerMascotas(ci, cantMascotas);
                     //Mostrar el contenido del arreglo, probablemente solo nombre y tipo
                     for (int i=0; i < cantMascotas; i++) { 
-                    	cout << i+1 << endl;
+                    	cout << (i+1) << endl;
 
                         if (dynamic_cast<DtGato*>(mascotas[i])) {
                             std::cout << (DtGato*) mascotas[i];
@@ -131,7 +131,7 @@ int main(int argc, char** argv) {
                     DtConsulta** consultas = verConsultasAntesDeFecha(fecha, ci, cantConsultas);
                     //Mostrar el contenido del arreglo
 					for (int i=0; i < cantConsultas; i++) {
-                        cout << i+1 << " - " << consultas[i]->getMotivo() << endl;
+                        cout << (i+1) << " - " << consultas[i]->getMotivo() << endl;
 					}
                     break;
                 }
