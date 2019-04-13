@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 
+
 Socio::Socio(std::string ci, std::string nombre, const DtFecha & _fechaIngreso) : FechaIngreso(_fechaIngreso) {
 	this->Ci = ci;
 	this->Nombre = nombre;
@@ -50,21 +51,25 @@ void Socio::agregarMascota(const DtMascota* m1) {
     }
 }
 
-void Socio::agregarConsulta(DtConsulta c1) {
+void Socio::agregarConsulta(const DtConsulta* c1) {
 	if (this->CantidadConsultas == MAX_CONSULTAS) {
-		throw std::invalid_argument("El socio no puede hacer más consultas.");
+		throw std::invalid_argument("El socio no puede hacer mas consultas.");
 	} else {
 		this->Consultas[this->CantidadConsultas] = new Consulta(
-                c1.getMotivo(),
-                c1.getFechaConsulta()
-                );
+                c1->getMotivo(),
+                c1->getFechaConsulta()
+            );
         ;
-		this->CantidadMascotas++;
+		this->CantidadConsultas++;
 	}
 }
 
 int Socio::getCantidadMascotas() const {
     return this->CantidadMascotas;
+}
+
+int Socio::getCantidadConsultas() const {
+    return this->CantidadConsultas;
 }
 
 Mascota** Socio::getMascota()  {

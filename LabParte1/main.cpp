@@ -24,8 +24,6 @@
 using namespace std;
 
 const int MAX_SOCIOS = 50;
-//const int MAX_MASCOTAS = 10;
-//const int MAX_CONSULTAS = 20; 
 
 Socio** socios = new Socio* [MAX_SOCIOS];
 int cantidadSocios = 0;
@@ -95,8 +93,8 @@ int main(int argc, char** argv) {
                     cin >> ci >> cantMascotas;
                     DtMascota** mascotas = obtenerMascotas(ci, cantMascotas);
                     //Mostrar el contenido del arreglo, probablemente solo nombre y tipo
-                    for (int i=0; i < (sizeof(mascotas)/sizeof(*mascotas)); i++) { 
-                    	cout << i+1 << endl << mascotas[i];
+                    for (int i=0; i < cantMascotas; i++) { 
+                    	cout << i+1 << endl << mascotas[i] << endl;
 					}
                     break;
                 }
@@ -124,8 +122,8 @@ int main(int argc, char** argv) {
                     DtFecha fecha(dia, mes, anio);
                     DtConsulta** consultas = verConsultasAntesDeFecha(fecha, ci, cantConsultas);
                     //Mostrar el contenido del arreglo
-					for (int i=0; i < (sizeof(consultas)/sizeof(*consultas)); i++) {
-                        cout << i+1 << " - " << consultas[i]->getMotivo(); 
+					for (int i=0; i < cantConsultas; i++) {
+                        cout << i+1 << " - " << consultas[i]->getMotivo() << endl;
 					}
                     break;
                 }
@@ -136,7 +134,7 @@ int main(int argc, char** argv) {
 		catch(std::invalid_argument &e){
 			cout << "\nError: " << e.what() << endl;
 		}
-		cin.ignore();
+		if (opcionUsuario != 5) { cin.ignore(); }
 		cout << "\nPresione ENTER para continuar...";
 		cin.get();
 		cout << endl;
@@ -190,8 +188,8 @@ void ingresarConsulta(std::string motivo, std::string ci){
 	std::time_t t = std::time(0);      // Obtener tiempo actual
 	std::tm* now = std::localtime(&t); //
 	
-	DtConsulta * consulta = new DtConsulta(motivo, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900));
-	socio->agregarConsulta(*consulta);
+	DtConsulta* consulta = new DtConsulta(motivo, DtFecha(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900));
+	socio->agregarConsulta(consulta);
 }
 
 DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio, int& cantConsultas){
@@ -204,20 +202,21 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio,
 	DtConsulta** retornoConsultas = new DtConsulta*[cantConsultas];
 	Consulta** consultasSocio = socio->getConsulta();
 	
-	if ((sizeof(consultasSocio)/sizeof(*consultasSocio)) < cantConsultas){ cantConsultas = (sizeof(consultasSocio)/sizeof(*consultasSocio)); }
+	if (socio->getCantidadConsultas() < cantConsultas){ cantConsultas = socio->getCantidadConsultas(); }
 	int j = 0;
-	for (int i=0; i < cantConsultas; i++) {
-		if ((consultasSocio[i]->getFechaConsulta()) < Fecha) {
+	for (int i=0; i < socio->getCantidadConsultas() && j < cantConsultas; i++) {
+		if (consultasSocio[i]->getFechaConsulta() < Fecha) {
 			retornoConsultas[j] = new DtConsulta(
 				consultasSocio[i]->getMotivo(),
 				consultasSocio[i]->getFechaConsulta()
 			);
 			j++;
+			cout << j;
 		}
 	}
-
+	
 	if (retornoConsultas == NULL) {
-		throw std::invalid_argument("No existen consultas antes de esa fecha"); 
+		throw std::invalid_argument("No existen consultas antes de esa fecha");
 	}
 	return retornoConsultas;
 }
@@ -239,9 +238,9 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 	DtMascota** retornoMascota = new DtMascota*[cantMascotas];
 	Mascota** mascotasSocio = socio->getMascota();
 	
-	if ((sizeof(mascotasSocio)/sizeof(*mascotasSocio)) < cantMascotas){ cantMascotas = (sizeof(mascotasSocio)/sizeof(*mascotasSocio)); }
+	if (socio->getCantidadMascotas() < cantMascotas){ cantMascotas = socio->getCantidadMascotas(); }
 	int j = 0;
-	for (int i=0; i < cantMascotas; i++) {
+	for (int i=0; i < socio->getCantidadMascotas() && j < cantMascotas; i++) {
 		auto p = dynamic_cast<const DtPerro*>(mascotasSocio[i]);
 	    if (p) {
 	        retornoMascota[j] = new DtPerro(
