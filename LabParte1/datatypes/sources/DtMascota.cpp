@@ -37,6 +37,7 @@ std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
 	
     //o << std::string("Genero: ") << dtM->getGenero() << std::string("\n");
     o << std::string("Peso: ") <<  std::to_string (dtM->getPeso());
+
     return o;
 }
 

@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 		cout << "3 Agregar Mascota.\n" << endl;             //Solo cuando el socio a agregar ya existe. Osea la 2da o mas mascota del socio.
 		cout << "4 Mostrar Lista de Mascotas.\n" << endl;   //Lista mascotas por ci de socio.
 		cout << "5 Ingresar Consulta.\n" << endl;           //Pregunta de Usuario a un socio existente.
-		cout << "6 Ver Consutas antes de una fecha.\n" << endl; 
+		cout << "6 Ver Consultas antes de una fecha.\n" << endl;
 		cout << "Pulse 0 para salir.\n" << endl;
 		
 		cin >> opcionUsuario;
@@ -95,7 +95,14 @@ int main(int argc, char** argv) {
                     //Mostrar el contenido del arreglo, probablemente solo nombre y tipo
                     for (int i=0; i < cantMascotas; i++) { 
                     	cout << i+1 << endl;
-                    	std::cout << mascotas[i];
+
+                        if (dynamic_cast<DtGato*>(mascotas[i])) {
+                            std::cout << (DtGato*) mascotas[i];
+                        } else {
+                            std::cout << (DtPerro*) mascotas[i];
+                        }
+
+                    	//std::cout << mascotas[i];
 					}
                     break;
                 }
