@@ -9,8 +9,11 @@ class Mascota {
 	public:
 		Mascota(std::string _nombre, const Genero& _genero, float _peso);
 		virtual float obtenerRacionDiaria();
-		
-	private:
+		std::string getNombre();
+		Genero getGenero();
+		float getPeso();
+
+    private:
 		std::string Nombre;
 		Genero genero;
 		float Peso;

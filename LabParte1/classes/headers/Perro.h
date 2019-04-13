@@ -8,7 +8,7 @@
 class Perro : public Mascota {
 	public:
 		Perro(RazaPerro _Raza, bool _VacunaCachorro, std::string _NombreMascota, const Genero& _Genero, float _Peso);
-		RazaPerro getRaza();
+		const RazaPerro getRaza();
 		bool getVacunaCachorro();
 	
 	private:

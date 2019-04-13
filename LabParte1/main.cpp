@@ -96,10 +96,10 @@ int main(int argc, char** argv) {
                     for (int i=0; i < cantMascotas; i++) { 
                     	cout << (i+1) << endl;
 
-                        if (dynamic_cast<DtGato*>(mascotas[i])) {
-                            std::cout << (DtGato*) mascotas[i];
-                        } else {
+                        if (dynamic_cast<DtPerro*>(mascotas[i])) {
                             std::cout << (DtPerro*) mascotas[i];
+                        } else {
+                            std::cout << (DtGato*) mascotas[i];
                         }
 
                     	//std::cout << mascotas[i];
@@ -249,7 +249,8 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 	if (socio->getCantidadMascotas() < cantMascotas){ cantMascotas = socio->getCantidadMascotas(); }
 	int j = 0;
 	for (int i=0; i < socio->getCantidadMascotas() && j < cantMascotas; i++) {
-		auto p = dynamic_cast<const DtPerro*>(mascotasSocio[i]);
+
+		Perro * p = dynamic_cast<Perro*>(mascotasSocio[i]);
 	    if (p) {
 	        retornoMascota[j] = new DtPerro(
 	        	p->getRaza(),
@@ -260,7 +261,7 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 	        );
 	    }
 	    else {
-	        DtGato* g = (DtGato*) mascotasSocio[i];
+	        auto g = (DtGato*) mascotasSocio[i];
 	        retornoMascota[j] = new DtGato(
 	        	g->getPelo(),
 	            g->getNombre(),
