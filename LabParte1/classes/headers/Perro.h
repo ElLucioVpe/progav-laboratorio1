@@ -3,6 +3,7 @@
 
 #include "Mascota.h"
 #include "../../datatypes/headers/RazaPerro.h"
+#include "../../datatypes/headers/DtPerro.h"
 
 class Perro : public Mascota {
 	public:
