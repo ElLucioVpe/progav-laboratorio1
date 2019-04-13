@@ -20,15 +20,15 @@ class Socio {
 		std::string getNombre() const;
 
 		int getCantidadMascotas() const;
+		int getCantidadConsultas() const;
 		DtFecha getFechaIngreso() const;
 		Consulta** getConsulta();
 		Mascota** getMascota();
-
 		void setMascota(Mascota** mascotas, int CantidadMascotas);
 		void setConsulta(Consulta** consultas, int CantidadConsultas);
 
 		void agregarMascota(const DtMascota* m1);
-		void agregarConsulta(DtConsulta c1);
+		void agregarConsulta(const DtConsulta* c1);
 	
 		virtual ~Socio();
 		
