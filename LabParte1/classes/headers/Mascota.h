@@ -10,7 +10,6 @@ class Mascota {
 		Mascota(std::string _nombre, const Genero& _genero, float _peso);
 		virtual float obtenerRacionDiaria();
 		
-		virtual std::ostream& operator<<(std::ostream &o, DtMascota* dtM);
 	private:
 		std::string Nombre;
 		Genero genero;

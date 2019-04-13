@@ -24,7 +24,7 @@ float DtMascota::getRacionDiaria() const {
 DtMascota::~DtMascota() {
 }
 
-/*
+
 //Overload de <<
 std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
     o << std::string("Nombre: ") << dtM->getNombre() << std::string("\n");
@@ -39,4 +39,4 @@ std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
     o << std::string("Peso: ") <<  std::to_string (dtM->getPeso());
     return o;
 }
-*/
+

@@ -17,7 +17,7 @@ bool DtPerro::getVacunaCachorro() const {
 DtPerro::~DtPerro() {
 }
 
-/*
+
 //Overload de <<
 std::ostream& operator<<(std::ostream &o, DtPerro* dtP) {
     o << std::string("Nombre: ") << dtP->getNombre() << std::string("\n");
@@ -74,4 +74,3 @@ if(dtP->getVacunaCachorro()==true){
 	
     return o;
 }
-*/

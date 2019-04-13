@@ -13,7 +13,7 @@ class DtMascota {
     float getPeso() const;
     float getRacionDiaria() const;
     
-    //friend std::ostream& operator<<(std::ostream &o, DtMascota* dtM);
+    friend std::ostream& operator<<(std::ostream &o, DtMascota* dtM);
     
     virtual ~DtMascota();
   private:

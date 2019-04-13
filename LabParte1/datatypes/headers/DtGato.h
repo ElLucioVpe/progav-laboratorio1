@@ -12,7 +12,7 @@ class DtGato : public DtMascota {
         TipoPelo getPelo() const;
 		
 		virtual ~DtGato();
-		//friend std::ostream& operator<<(std::ostream &o, DtGato* dtG);
+		friend std::ostream& operator<<(std::ostream &o, DtGato* dtG);
     private:
         TipoPelo Tipo;
 };

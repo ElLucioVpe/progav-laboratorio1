@@ -94,7 +94,8 @@ int main(int argc, char** argv) {
                     DtMascota** mascotas = obtenerMascotas(ci, cantMascotas);
                     //Mostrar el contenido del arreglo, probablemente solo nombre y tipo
                     for (int i=0; i < cantMascotas; i++) { 
-                    	cout << i+1 << endl << mascotas[i] << endl;
+                    	cout << i+1 << endl;
+                    	std::cout << mascotas[i];
 					}
                     break;
                 }

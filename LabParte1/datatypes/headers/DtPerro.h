@@ -13,7 +13,7 @@ class DtPerro : public DtMascota {
     bool getVacunaCachorro() const;
     
     virtual ~DtPerro();
-   // friend std::ostream& operator<<(std::ostream &o, DtPerro* dtP);
+    friend std::ostream& operator<<(std::ostream &o, DtPerro* dtP);
   private:
     RazaPerro Raza;
     bool VacunaCachorro;

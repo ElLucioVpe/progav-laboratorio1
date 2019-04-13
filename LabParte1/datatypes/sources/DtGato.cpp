@@ -12,7 +12,7 @@ DtGato::~DtGato() {
 }
 
 
-/*
+
 //Overload de <<
 std::ostream& operator<<(std::ostream &o, DtGato* dtG) {
     o << std::string("Nombre: ") << dtG->getNombre() << std::string("\n");
@@ -36,5 +36,4 @@ std::ostream& operator<<(std::ostream &o, DtGato* dtG) {
 	
     return o;
 }
-*/
 
