@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <ctime>
+#include <string>
 
 #include "datatypes/headers/Genero.h"
 #include "datatypes/headers/RazaPerro.h"
@@ -100,7 +101,8 @@ int main(int argc, char** argv) {
                     cout << "Ingrese su cedula: ";
                     cin >> ci;
                     cout << "\nIngrese su consulta: ";
-                    cin >> motivo;
+                    cin.ignore();
+                    getline(cin, motivo);
                     ingresarConsulta(motivo, ci);
                     break;
                 }
@@ -130,6 +132,8 @@ int main(int argc, char** argv) {
 		catch(std::invalid_argument &e){
 			cout << "Error: " << e.what() << endl;
 		}
+		cout << "Presione ENTER para continuar...";
+		cin.get();
 	}
 	return 0;
 }
