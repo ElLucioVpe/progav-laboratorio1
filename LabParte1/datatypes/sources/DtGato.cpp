@@ -12,7 +12,7 @@ DtGato::~DtGato() {
 }
 
 float DtGato::obtenerRacionDiaria() {
-    return this->getPeso() * 0,015;
+    return this->getPeso() * 0.015;
 }
 
 //Overload de <<

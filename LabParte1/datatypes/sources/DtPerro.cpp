@@ -17,6 +17,10 @@ bool DtPerro::getVacunaCachorro() const {
 DtPerro::~DtPerro() {
 }
 
+float DtPerro::obtenerRacionDiaria() {
+    return this->getPeso() * 0.025;
+}
+
 //Overload de <<
 std::ostream& operator<<(std::ostream &o, DtPerro* dtP) {
     o << std::string("Nombre: ") << dtP->getNombre() << std::string("\n");
@@ -74,8 +78,4 @@ std::ostream& operator<<(std::ostream &o, DtPerro* dtP) {
     //*Vacunas
 	
     return o;
-}
-
-float DtPerro::obtenerRacionDiaria() {
-    return this->getPeso() * 0,025;
 }
