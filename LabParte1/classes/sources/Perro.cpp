@@ -15,7 +15,3 @@ const RazaPerro Perro::getRaza() {
 bool Perro::getVacunaCachorro() {
 	return this->VacunaCachorro;
 }
-
-float Mascota::obtenerRacionDiaria() {
-    return 0;
-}

@@ -12,7 +12,6 @@ class Mascota {
 		std::string getNombre();
 		Genero getGenero();
 		float getPeso();
-
     private:
 		std::string Nombre;
 		Genero genero;

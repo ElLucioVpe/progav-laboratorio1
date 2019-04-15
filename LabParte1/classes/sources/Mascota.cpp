@@ -14,5 +14,5 @@ Genero Mascota::getGenero() {
 }
 
 float Mascota::getPeso() {
-    return 0;
+    return this->Peso;
 }

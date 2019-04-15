@@ -11,7 +11,8 @@ class DtPerro : public DtMascota {
     DtPerro (const RazaPerro raza, bool vacunaCachorro, std::string NombreMascota, const Genero& Genero, float Peso);
     RazaPerro getRaza() const;
     bool getVacunaCachorro() const;
-    
+    float obtenerRacionDiaria();
+
     virtual ~DtPerro();
     friend std::ostream& operator<<(std::ostream &o, DtPerro* dtP);
   private:

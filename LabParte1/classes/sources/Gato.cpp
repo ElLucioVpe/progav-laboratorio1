@@ -8,4 +8,6 @@ TipoPelo Gato::getTipoPelo(){
   return this->Pelo;
 }
 
-
+float Mascota::obtenerRacionDiaria() {
+    return (this->Peso * 0,015);
+}

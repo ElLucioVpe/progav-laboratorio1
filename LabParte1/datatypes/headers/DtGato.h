@@ -10,8 +10,9 @@ class DtGato : public DtMascota {
     public:
         DtGato (TipoPelo Tipo, std::string NombreMascota, const Genero& Genero, float Peso);
         TipoPelo getPelo() const;
-		
-		virtual ~DtGato();
+        float obtenerRacionDiaria();
+
+        virtual ~DtGato();
 		friend std::ostream& operator<<(std::ostream &o, DtGato* dtG);
     private:
         TipoPelo Tipo;

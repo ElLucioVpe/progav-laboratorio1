@@ -11,7 +11,9 @@ TipoPelo DtGato::getPelo() const{
 DtGato::~DtGato() {
 }
 
-
+float DtGato::obtenerRacionDiaria() {
+    return this->getPeso() * 0,015;
+}
 
 //Overload de <<
 std::ostream& operator<<(std::ostream &o, DtGato* dtG) {
@@ -25,8 +27,10 @@ std::ostream& operator<<(std::ostream &o, DtGato* dtG) {
 	}
 	
     o << std::string("Peso: ") <<  std::to_string (dtG->getPeso()) << std::string("\n");
-    
-     if(dtG->getPelo()==TipoPelo::Corto){
+
+    o << std::string("Racion diaria: ") <<  std::to_string (dtG->obtenerRacionDiaria()) << std::string("\n");
+
+    if(dtG->getPelo()==TipoPelo::Corto){
 		o << std::string("Tipo de Pelo: Corto")<< std::string("\n");
 	}else if(dtG->getPelo()==TipoPelo::Mediano){
          o << std::string("Tipo de Pelo: Mediano")<< std::string("\n");

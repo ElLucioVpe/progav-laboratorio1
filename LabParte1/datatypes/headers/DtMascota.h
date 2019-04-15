@@ -11,7 +11,8 @@ class DtMascota {
     std::string getNombre () const;
     Genero getGenero() const;
     float getPeso() const;
-    float getRacionDiaria() const;
+
+    virtual float obtenerRacionDiaria() = 0;
     
     friend std::ostream& operator<<(std::ostream &o, DtMascota* dtM);
     

@@ -17,13 +17,8 @@ float DtMascota::getPeso() const {
   return this->peso;
 }
 
-float DtMascota::getRacionDiaria() const {
-  return this->racionDiaria;
-}
-
 DtMascota::~DtMascota() {
 }
-
 
 //Overload de <<
 std::ostream& operator<<(std::ostream &o, DtMascota* dtM) {
