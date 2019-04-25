@@ -211,19 +211,18 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio,
 	Consulta** consultasSocio = socio->getConsulta();
 	
 	if (socio->getCantidadConsultas() < cantConsultas){ cantConsultas = socio->getCantidadConsultas(); }
-	int j = 0;
-	for (int i=0; i < socio->getCantidadConsultas() && j < cantConsultas; i++) {
+	int i, j = 0;
+	for (i=0; i < socio->getCantidadConsultas() && j < cantConsultas; i++) {
 		if (consultasSocio[i]->getFechaConsulta() < Fecha) {
 			retornoConsultas[j] = new DtConsulta(
 				consultasSocio[i]->getMotivo(),
 				consultasSocio[i]->getFechaConsulta()
 			);
 			j++;
-			cout << j;
 		}
 	}
 	
-	if (retornoConsultas == NULL) {
+	if (i == socio->getCantidadConsultas() && j == 0) {
 		throw std::invalid_argument("No existen consultas antes de esa fecha");
 	}
 	return retornoConsultas;
@@ -304,8 +303,13 @@ DtMascota* crearDtMascota (std::string tipoMascota){
         if (generoMascota == "Macho"){
 			genero = Genero::Macho;
 		}else{
-			genero = Genero::Hembra;
-		} 
+			if (generoMascota == "Hembra"){
+				genero = Genero::Hembra;
+			}
+			else{
+				throw std::invalid_argument("Genero invalido");
+			}
+		}
             	 
         RazaPerro razaPerro; 
 		if(raza == "Labrador"){
@@ -325,7 +329,10 @@ DtMascota* crearDtMascota (std::string tipoMascota){
 						}else{ 
 							if (raza == "Otro"){
 								razaPerro = RazaPerro::Otro;
-							} 
+							}
+							else{
+								throw std::invalid_argument("Raza invalida");
+							}
 						} 
 					} 
 				} 
@@ -338,34 +345,46 @@ DtMascota* crearDtMascota (std::string tipoMascota){
         }
         
         mascota = new DtPerro(razaPerro, vacunabool, nombreMascota, genero, pesoMascota);
-    } else {
-		std::string tipoPelo, vacuna; 
-		cout << "Ingrese en orden el nombre, genero, peso, y su tipo de pelo: ";
-		cin >> nombreMascota >> generoMascota >> pesoMascota >> tipoPelo; 
-			
-		Genero genero; 
-        if (generoMascota == "Macho"){
-			genero = Genero::Macho;
-		}else{
-			genero = Genero::Hembra;
-		} 
-        	
-        TipoPelo pelo; 
-        	
-       	if(tipoPelo == "Corto"){
-            pelo = TipoPelo::Corto;
-		}else{ 
-			if(tipoPelo == "Mediano"){
-                pelo = TipoPelo::Mediano;
-			}else{ 
-				if(tipoPelo == "Largo"){
-                    pelo = TipoPelo::Largo;
-				} 
+    }
+	else{ 
+		if (tipoMascota == "Gato") {
+			std::string tipoPelo, vacuna; 
+			cout << "Ingrese en orden el nombre, genero, peso, y su tipo de pelo: ";
+			cin >> nombreMascota >> generoMascota >> pesoMascota >> tipoPelo; 
+				
+			Genero genero; 
+	        if (generoMascota == "Macho"){
+				genero = Genero::Macho;
+			}else{
+				if (generoMascota == "Hembra"){
+					genero = Genero::Hembra;
+				}
+				else{
+					throw std::invalid_argument("Genero invalido");
+				}
 			} 
-		}
-		
-		mascota = new DtGato(pelo, nombreMascota, genero, pesoMascota);
-	}    
-
+	        	
+	        TipoPelo pelo; 
+	        	
+	       	if(tipoPelo == "Corto"){
+	            pelo = TipoPelo::Corto;
+			}else{ 
+				if(tipoPelo == "Mediano"){
+	                pelo = TipoPelo::Mediano;
+				}else{ 
+					if(tipoPelo == "Largo"){
+	                    pelo = TipoPelo::Largo;
+					}
+					else{
+						throw std::invalid_argument("Tipo de Pelo invalido");
+					} 
+				} 
+			}
+			
+			mascota = new DtGato(pelo, nombreMascota, genero, pesoMascota);
+		} else {
+			throw std::invalid_argument("Tipo de mascota invalido, por favor ingrese Perro o Gato");
+		}    
+	}
     return mascota;
 }  
