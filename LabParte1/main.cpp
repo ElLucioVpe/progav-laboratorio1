@@ -230,11 +230,25 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio,
 }
 
 void eliminarSocio(std::string ci){
-	Socio* socio = obtenerSocio(ci);
+	Socio* socio;
+	
+	int i;
+	for(i = 0; i < cantidadSocios; i++) {
+        if (socios[i]->getCi() == ci) {
+            socio = socios[i];
+        }
+    }
+    
 	if (socio == NULL) { 
 		throw std::invalid_argument("No existe el socio que quiere eliminar"); 
 	}
-	delete socio;
+	
+	delete socios[i];
+	for (int j = i; j < cantidadSocios; j++) {
+		socios[j] = socios[j+1];
+	}
+	cantidadSocios--;
+	
 	std::cout << "El Socio se ha eliminado efectivamente" << '\n';
 }
 
