@@ -101,8 +101,6 @@ int main(int argc, char** argv) {
                         } else {
                             std::cout << (DtGato*) mascotas[i];
                         }
-
-                    	//std::cout << mascotas[i];
 					}
                     break;
                 }
@@ -229,10 +227,10 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, std::string ciSocio,
 }
 
 void eliminarSocio(std::string ci){
-	Socio* socio;
+	Socio* socio = NULL;
 	
 	int i;
-	for(i = 0; i < cantidadSocios; i++) {
+	for(i = 0; i < cantidadSocios && socio == NULL; i++) {
         if (socios[i]->getCi() == ci) {
             socio = socios[i];
         }
@@ -242,8 +240,8 @@ void eliminarSocio(std::string ci){
 		throw std::invalid_argument("No existe el socio que quiere eliminar"); 
 	}
 	
-	delete socios[i];
-	for (int j = i; j < cantidadSocios; j++) {
+	delete socios[i-1];
+	for (int j = i-1; j < cantidadSocios; j++) {
 		socios[j] = socios[j+1];
 	}
 	cantidadSocios--;
@@ -274,9 +272,9 @@ DtMascota** obtenerMascotas(std::string ci, int& cantMascotas){
 	        );
 	    }
 	    else {
-	        auto g = (DtGato*) mascotasSocio[i];
+	        auto g = (Gato*) mascotasSocio[i];
 	        retornoMascota[j] = new DtGato(
-	        	g->getPelo(),
+	        	g->getTipoPelo(),
 	            g->getNombre(),
 	            g->getGenero(),
 	            g->getPeso()
@@ -377,8 +375,8 @@ DtMascota* crearDtMascota (std::string tipoMascota){
 					}
 					else{
 						throw std::invalid_argument("Tipo de Pelo invalido");
-					} 
-				} 
+					}
+				}
 			}
 			
 			mascota = new DtGato(pelo, nombreMascota, genero, pesoMascota);
